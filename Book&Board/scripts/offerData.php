@@ -1,77 +1,8 @@
 <?php
-// Array of best offer objects, consumed by multiple views allowing content to be dymanically generated
+// Array of all offer objects, consumed by multiple views allowing content to be dymanically generated
 // this approach allows data to be edited once, in this file, then automatically updated across the application
-$bestOffers = [
-    (object) [
-        'id' => 1,
-        'location' => 'Maldives',
-        'starRating' => '★★★★★',
-        'dates' => '2nd - 12th August 2024 (10 Days)',
-        'description' => 'This incredible 5 star once in a lifetime experience is not to be missed! Relax in luxury with your very own private pool, or experience all the islands have to offer from scuba diving to watching giant sea turtles hatch on the beautiful unspoilt beaches. Perfect for honeymoons!',
-        'images' => ['../resources/maldives1.webp', '../resources/maldives2.webp', '../resources/maldives3.webp'],
-        'price' => '£4000pp',
-        'activities' => ['Scuba Diving', 'Turtle Watching', 'Luxury Spa'],
-        'facilities' => ['Private Pool', 'Beachfront Villas', 'All-inclusive Dining']
-    ],
-    (object) [
-        'id' => 2,
-        'location' => 'Tokyo - Japan',
-        'starRating' => '★★★',
-        'dates' => '1st - 14th September 2024 (14 Days)',
-        'description' => 'Experience the pinnacle of luxury in Tokyo, where cutting-edge innovation meets timeless tradition. Indulge in world-class dining, opulent accommodations, and exclusive shopping experiences, all set against the backdrop of the city\'s dazzling skyline and serene gardens.',
-        'images' => ['../resources/tokyo1.webp', '../resources/tokyo2.webp', '../resources/tokyo3.webp'],
-        'price' => '£3000pp',
-        'activities' => ['Sightseeing', 'Shopping', 'Cultural Tours'],
-        'facilities' => ['Luxury Hotels', 'Fine Dining', 'Spa Services']
-    ],
-    (object) [
-        'id' => 3,
-        'location' => 'Monaco',
-        'starRating' => '★★★★',
-        'dates' => '15th - 18th September 2024 (4 Days)',
-        'description' => 'Discover Monaco, renowned for its stunning cultural landmarks, luxurious casinos, and breathtaking vistas of the iconic French Riviera. Steeped in history, this elegant city gracefully combines timeless charm with modern sophistication, all set to the faint hum of race cars.',
-        'images' => ['../resources/monaco1.webp', '../resources/monaco2.webp', '../resources/monaco3.webp'],
-        'price' => '£500pp',
-        'activities' => ['Casino Visits', 'Sightseeing', 'Luxury Shopping'],
-        'facilities' => ['High-end Hotels', 'Gourmet Restaurants', 'Spa and Wellness Centers']
-    ],
-];
 
-// Array of all offers
 $allOffers = [
-    (object) [
-        'id' => 1,
-        'location' => 'Maldives',
-        'starRating' => '★★★★★',
-        'dates' => '2nd - 12th August 2024 (10 Days)',
-        'description' => 'This incredible 5 star once in a lifetime experience is not to be missed! Relax in luxury with your very own private pool, or experience all the islands have to offer from scuba diving to watching giant sea turtles hatch on the beautiful unspoilt beaches. Perfect for honeymoons!',
-        'images' => ['../resources/maldives1.webp', '../resources/maldives2.webp', '../resources/maldives3.webp'],
-        'price' => '£4000pp',
-        'activities' => ['Scuba Diving', 'Turtle Watching', 'Luxury Spa'],
-        'facilities' => ['Private Pool', 'Beachfront Villas', 'All-inclusive Dining']
-    ],
-    (object) [
-        'id' => 2,
-        'location' => 'Tokyo - Japan',
-        'starRating' => '★★★',
-        'dates' => '1st - 14th September 2024 (14 Days)',
-        'description' => 'Experience the pinnacle of luxury in Tokyo, where cutting-edge innovation meets timeless tradition. Indulge in world-class dining, opulent accommodations, and exclusive shopping experiences, all set against the backdrop of the city\'s dazzling skyline and serene gardens.',
-        'images' => ['../resources/tokyo1.webp', '../resources/tokyo2.webp', '../resources/tokyo3.webp'],
-        'price' => '£3000pp',
-        'activities' => ['Sightseeing', 'Shopping', 'Cultural Tours'],
-        'facilities' => ['Luxury Hotels', 'Fine Dining', 'Spa Services']
-    ],
-    (object) [
-        'id' => 3,
-        'location' => 'Monaco',
-        'starRating' => '★★★★',
-        'dates' => '15th - 18th September 2024 (4 Days)',
-        'description' => 'Discover Monaco, renowned for its stunning cultural landmarks, luxurious casinos, and breathtaking vistas of the iconic French Riviera. Steeped in history, this elegant city gracefully combines timeless charm with modern sophistication, all set to the faint hum of race cars.',
-        'images' => ['../resources/monaco1.webp', '../resources/monaco2.webp', '../resources/monaco3.webp'],
-        'price' => '£500pp',
-        'activities' => ['Casino Visits', 'Sightseeing', 'Luxury Shopping'],
-        'facilities' => ['High-end Hotels', 'Gourmet Restaurants', 'Spa and Wellness Centers']
-    ],
     (object) [
         'id' => 4,
         'location' => 'Paris - France',
@@ -148,5 +79,38 @@ $allOffers = [
         'price' => '£2800pp',
         'activities' => ['Beach Activities', 'Nightlife', 'Cultural Tours'],
         'facilities' => ['Beachfront Villas', 'Fine Dining', 'Spa Services']
+    ],
+    (object) [
+        'id' => 1,
+        'location' => 'Maldives',
+        'starRating' => '★★★★★',
+        'dates' => '2nd - 12th August 2024 (10 Days)',
+        'description' => 'This incredible 5 star once in a lifetime experience is not to be missed! Relax in luxury with your very own private pool, or experience all the islands have to offer from scuba diving to watching giant sea turtles hatch on the beautiful unspoilt beaches. Perfect for honeymoons!',
+        'images' => ['../resources/maldives1.webp', '../resources/maldives2.webp', '../resources/maldives3.webp'],
+        'price' => '£4000pp',
+        'activities' => ['Scuba Diving', 'Turtle Watching', 'Luxury Spa'],
+        'facilities' => ['Private Pool', 'Beachfront Villas', 'All-inclusive Dining']
+    ],
+    (object) [
+        'id' => 2,
+        'location' => 'Tokyo - Japan',
+        'starRating' => '★★★',
+        'dates' => '1st - 14th September 2024 (14 Days)',
+        'description' => 'Experience the pinnacle of luxury in Tokyo, where cutting-edge innovation meets timeless tradition. Indulge in world-class dining, opulent accommodations, and exclusive shopping experiences, all set against the backdrop of the city\'s dazzling skyline and serene gardens.',
+        'images' => ['../resources/tokyo1.webp', '../resources/tokyo2.webp', '../resources/tokyo3.webp'],
+        'price' => '£3000pp',
+        'activities' => ['Sightseeing', 'Shopping', 'Cultural Tours'],
+        'facilities' => ['Luxury Hotels', 'Fine Dining', 'Spa Services']
+    ],
+    (object) [
+        'id' => 3,
+        'location' => 'Monaco',
+        'starRating' => '★★★★',
+        'dates' => '15th - 18th September 2024 (4 Days)',
+        'description' => 'Discover Monaco, renowned for its stunning cultural landmarks, luxurious casinos, and breathtaking vistas of the iconic French Riviera. Steeped in history, this elegant city gracefully combines timeless charm with modern sophistication, all set to the faint hum of race cars.',
+        'images' => ['../resources/monaco1.webp', '../resources/monaco2.webp', '../resources/monaco3.webp'],
+        'price' => '£500pp',
+        'activities' => ['Casino Visits', 'Sightseeing', 'Luxury Shopping'],
+        'facilities' => ['High-end Hotels', 'Gourmet Restaurants', 'Spa and Wellness Centers']
     ]
 ];
