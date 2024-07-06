@@ -10,7 +10,7 @@ body {
     33,
     33,
     33,
-    0.4
+    0.25
   ); /* Semi-transparent dark background color as an overlay, ensuring the white text stands out better against iamge */
 }
 
@@ -28,7 +28,8 @@ footer {
   width: 80vw; /* Responsive width */
   color: white; /* Text color */
   font-size: 1rem; /* Font size */
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; /* Text shadow for better readability */
+  text-shadow: -1px 0 rgb(0, 33, 71), 0 1px rgb(0, 33, 71), 1px 0 rgb(0, 33, 71),
+    0 -1px rgb(0, 33, 71); /* Text shadow for better readability */
 }
 
 #introduction-text h1 {
@@ -70,7 +71,7 @@ footer {
 h5,
 h6 {
   margin: 10px; /* Margin around headings */
-  color: black; /* Text color */
+  color: #002147; /* Text color */
   letter-spacing: 2px; /* Space between letters to make text more readable */
 }
 
@@ -92,7 +93,7 @@ h6 {
 .star-rating {
   color: gold; /* Gold color for star rating */
   -webkit-text-stroke-width: 0.75px; /* Stroke width */
-  -webkit-text-stroke-color: black; /* Stroke color */
+  -webkit-text-stroke-color: rgb(0, 33, 71); /* Stroke color */
   font-size: 1.2rem; /* Font size */
 }
 
@@ -100,7 +101,7 @@ h6 {
   color: rgb(53, 140, 192); /* Text color */
   font-weight: bold; /* Bold text */
   -webkit-text-stroke-width: 0.75px; /* Stroke width */
-  -webkit-text-stroke-color: black; /* Stroke color */
+  -webkit-text-stroke-color: rgb(0, 33, 71); /* Stroke color */
   letter-spacing: 2px; /* Space between letters */
   font-size: 1.2rem; /* Font size */
   font-weight: 900; /* Extra bold text */
@@ -170,7 +171,8 @@ h6 {
   display: block; /* Block display for anchor tags */
   padding: 20px 20px; /* Padding inside the anchor tags */
   color: white; /* Text color */
-  text-shadow: -0.75px 0 black, 0 0.75px black, 0.75px 0 black, 0 -0.75px black; /* Text shadow */
+  text-shadow: -0.75px 0 rgb(0, 33, 71), 0 0.75px rgb(0, 33, 71),
+    0.75px 0 rgb(0, 33, 71), 0 -0.75px rgb(0, 33, 71); /* Text shadow */
   text-decoration: none; /* Remove underline */
   transition: all 0.45s; /* Smooth transition effect */
   font-size: 1rem; /* Font size */
@@ -211,8 +213,9 @@ h6 {
   top: 10px; /* Top position */
   left: 40px; /* Left position */
   border-radius: 50%; /* Circular shape */
-  border: 1px solid black; /* Border */
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; /* Text shadow */
+  border: 1px solid rgb(0, 33, 71); /* Border */
+  text-shadow: -1px 0 rgb(0, 33, 71), 0 1px rgb(0, 33, 71), 1px 0 rgb(0, 33, 71),
+    0 -1px rgb(0, 33, 71); /* Text shadow */
   font-weight: bolder; /* Extra bold text */
   font-size: 1.8rem; /* Font size */
 }
