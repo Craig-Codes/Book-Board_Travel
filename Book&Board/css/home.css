@@ -1,0 +1,322 @@
+html {
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  transition: background-image 1s ease; /* Smooth image change */
+}
+
+body {
+  background-color: rgba(33, 33, 33, 0.4);
+}
+
+footer {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#introduction-text {
+  max-width: 700px;
+  width: 80vw;
+  color: white;
+  font-size: 1rem;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#introduction-text h1 {
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 3rem;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#best-selling-offers {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Ensure wrapping is enabled */
+  gap: 45px; /* Adjusted gap to make wrapping easier */
+  justify-content: center; /* Centers the content */
+  align-items: center;
+  width: 100%; /* Set width to 100% for responsive design */
+  max-width: 1200px; /* Maximum width to control layout */
+  height: auto; /* Height set to auto to accommodate content */
+}
+
+.offer-card {
+  background-color: rgba(180, 194, 211, 0.85);
+  width: 300px;
+  height: 350px; /* Adjust height as needed, or set to auto */
+  border-radius: 10px;
+  transition: 0.5s; /* Added 's' for seconds */
+  padding: 15px;
+  box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+.offer-card h4,
+h5,
+h6 {
+  margin: 10px;
+  color: black;
+  letter-spacing: 2px;
+}
+
+.offer-card h4 {
+  font-size: 1.4rem;
+}
+
+.offer-card:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.4);
+}
+
+.star-rating {
+  color: gold;
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: black;
+  font-size: 1.2rem;
+}
+
+.offer-price {
+  color: rgb(53, 140, 192);
+  font-weight: bold;
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: black;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.travel-description {
+  text-align: justify;
+}
+
+@media (min-width: 1600px) {
+  .offer-card {
+    height: 410px;
+  }
+}
+
+@media (max-width: 1600px) {
+  #best-selling-offers {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 1400px) {
+  #best-selling-offers {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 1200px) {
+  #best-selling-offers {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 995px) {
+  html {
+    background-size: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .offer-card {
+    height: 300px;
+  }
+}
+
+.header {
+  background-color: rgb(53, 140, 192);
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  top: 0;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  color: white;
+  text-shadow: -0.75px 0 black, 0 0.75px black, 0.75px 0 black, 0 -0.75px black;
+  text-decoration: none;
+  transition: all 0.45s;
+  font-size: 1rem;
+}
+
+.header li a:hover {
+  background-color: rgb(2, 75, 118);
+}
+
+.header .menu-btn a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.header .menu-btn a:hover {
+  color: white;
+}
+
+.header .logo {
+  cursor: default;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #cbe6f0;
+  font-family: "Pacifico", cursive;
+  background-color: rgb(95, 182, 191);
+  height: 30px;
+  width: 10px;
+  top: 10px;
+  left: 40px;
+  border-radius: 50%;
+  border: 1px solid black;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-weight: bolder;
+  font-size: 1.8rem;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+  top: 12px;
+}
+
+.header .menu-icon .navicon {
+  background: white;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background 0.2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: white;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+.header.scrolled {
+  background-color: rgb(53, 140, 192);
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .header {
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: none;
+  }
+
+  .header li {
+    float: left;
+  }
+  .header li a {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 20px;
+    margin-left: 20px;
+    bottom: 15px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+    padding-right: 40px;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+
+  .header ul li {
+    top: -10px;
+    list-style: none;
+    display: inline-block;
+    padding-bottom: 2px; /*the space for the gradient*/
+    background: linear-gradient(#cbe6f0, #cbe6f0) center bottom; /*OR bottom right OR bottom left*/
+    background-size: 0% 2px; /*width:0% height:2px*/
+    background-repeat: no-repeat; /* Don't repeat !!*/
+    transition: all 0.45s;
+  }
+
+  .header ul li a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .header ul li:hover {
+    background-size: 100% 2px; /*width:100% height:2px*/
+  }
+
+  .header li a:hover {
+    background-color: rgba(255, 255, 255, 0);
+  }
+}

@@ -1,0 +1,89 @@
+#best-selling-offers {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Ensure wrapping is enabled */
+  gap: 45px; /* Adjusted gap to make wrapping easier */
+  justify-content: center; /* Centers the content */
+  align-items: center;
+  width: 100%; /* Set width to 100% for responsive design */
+  max-width: 1200px; /* Maximum width to control layout */
+  height: auto; /* Height set to auto to accommodate content */
+}
+
+.offer-card {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  gap: 30px;
+  max-width: 1500px;
+  width: 80vw;
+  height: 400px; /* Adjust height as needed, or set to auto */
+  border-radius: 10px;
+  transition: 0.5s; /* Added 's' for seconds */
+  padding: 30px;
+  box-sizing: border-box; /* Ensures padding is included in width */
+  box-shadow: 0 0 4px rgba(33, 33, 33, 0.4);
+}
+
+.offer-card h4,
+h5,
+h6 {
+  margin: 10px;
+  color: black;
+  letter-spacing: 2px;
+}
+
+.offer-card h4 {
+  font-size: 1.4rem;
+}
+
+.offer-card:hover {
+  box-shadow: 0 0 10px rgba(33, 33, 33, 0.5);
+}
+
+.star-rating {
+  color: gold;
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: black;
+  font-size: 1.2rem;
+}
+
+.offer-price {
+  color: rgb(53, 140, 192);
+  font-weight: bold;
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: black;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.travel-description {
+  text-align: justify;
+}
+
+.offer-details {
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+}
+
+.offer-image {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1.25;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.offer-image img {
+  width: 400px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+@media (min-width: 1200px) {
+  .offer-image img {
+    width: 450px;
+  }
+}
