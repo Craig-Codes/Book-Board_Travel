@@ -1,89 +1,101 @@
+/* Container for best-selling offers */
 #best-selling-offers {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap; /* Ensure wrapping is enabled */
-  gap: 45px; /* Adjusted gap to make wrapping easier */
-  justify-content: center; /* Centers the content */
-  align-items: center;
-  width: 100%; /* Set width to 100% for responsive design */
+  margin-top: 20px; /* Top margin */
+  display: flex; /* Use flexbox layout */
+  flex-wrap: wrap; /* Enable wrapping of items */
+  gap: 45px; /* Gap between items */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  width: 100%; /* Full width of the container */
   max-width: 1200px; /* Maximum width to control layout */
-  height: auto; /* Height set to auto to accommodate content */
+  height: auto; /* Auto height to accommodate content */
 }
 
+/* Styles for each offer card */
 .offer-card {
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-  gap: 30px;
-  max-width: 1500px;
-  width: 80vw;
-  height: 400px; /* Adjust height as needed, or set to auto */
-  border-radius: 10px;
-  transition: 0.5s; /* Added 's' for seconds */
-  padding: 30px;
-  box-sizing: border-box; /* Ensures padding is included in width */
-  box-shadow: 0 0 4px rgba(33, 33, 33, 0.4);
+  display: flex; /* Use flexbox layout */
+  flex-direction: row; /* Horizontal layout */
+  background-color: white; /* White background color */
+  gap: 30px; /* Gap between elements inside the card */
+  max-width: 1500px; /* Maximum width */
+  width: 80vw; /* 80% of the viewport width */
+  height: 400px; /* Fixed height */
+  border-radius: 10px; /* Rounded corners */
+  transition: 0.5s; /* Smooth transition effect */
+  padding: 30px; /* Padding inside the card */
+  box-sizing: border-box; /* Include padding in the width */
+  box-shadow: 0 0 4px rgba(33, 33, 33, 0.4); /* Shadow effect */
 }
 
+/* Heading styles inside the offer card */
 .offer-card h4,
 h5,
 h6 {
-  margin: 10px;
-  color: black;
-  letter-spacing: 2px;
+  margin: 10px; /* Margin around headings */
+  color: black; /* Text color */
+  letter-spacing: 2px; /* Spacing between letters */
 }
 
+/* Specific style for h4 in the offer card */
 .offer-card h4 {
-  font-size: 1.4rem;
+  font-size: 1.4rem; /* Font size */
 }
 
+/* Hover effect for the offer card */
 .offer-card:hover {
-  box-shadow: 0 0 10px rgba(33, 33, 33, 0.5);
+  box-shadow: 0 0 10px rgba(33, 33, 33, 0.5); /* Larger shadow on hover */
 }
 
+/* Star rating style */
 .star-rating {
-  color: gold;
-  -webkit-text-stroke-width: 0.75px;
-  -webkit-text-stroke-color: black;
-  font-size: 1.2rem;
+  color: gold; /* Gold color for stars */
+  -webkit-text-stroke-width: 0.75px; /* Stroke width */
+  -webkit-text-stroke-color: black; /* Stroke color */
+  font-size: 1.2rem; /* Font size */
 }
 
+/* Offer price style */
 .offer-price {
-  color: rgb(53, 140, 192);
-  font-weight: bold;
-  -webkit-text-stroke-width: 0.75px;
-  -webkit-text-stroke-color: black;
-  letter-spacing: 2px;
-  font-size: 1.2rem;
-  font-weight: 900;
+  color: rgb(53, 140, 192); /* Text color */
+  font-weight: bold; /* Bold font weight */
+  -webkit-text-stroke-width: 0.75px; /* Stroke width */
+  -webkit-text-stroke-color: black; /* Stroke color */
+  letter-spacing: 2px; /* Spacing between letters */
+  font-size: 1.2rem; /* Font size */
+  font-weight: 900; /* Extra bold font weight */
 }
 
+/* Travel description style */
 .travel-description {
-  text-align: justify;
+  text-align: justify; /* Justified text alignment */
 }
 
+/* Container for offer details */
 .offer-details {
-  display: flex;
-  flex-grow: 2;
-  flex-direction: column;
+  display: flex; /* Use flexbox layout */
+  flex-grow: 2; /* Allow to grow */
+  flex-direction: column; /* Vertical layout */
 }
 
+/* Container for offer image */
 .offer-image {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1.25;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Vertical layout */
+  flex-grow: 1.25; /* Allow to grow */
+  align-items: center; /* Center items horizontally */
+  justify-content: space-between; /* Space items evenly */
 }
 
+/* Style for images inside the offer card */
 .offer-image img {
-  width: 400px;
-  height: 300px;
-  border-radius: 10px;
+  width: 400px; /* Fixed width */
+  height: 300px; /* Fixed height */
+  border-radius: 10px; /* Rounded corners */
 }
 
+/* Media query for larger screens */
 @media (min-width: 1200px) {
   .offer-image img {
-    width: 450px;
+    width: 450px; /* Increased width for larger screens */
   }
 }

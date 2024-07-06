@@ -1,322 +1,358 @@
 html {
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the background image */
   background-size: cover; /* Resize the background image to cover the entire container */
-  transition: background-image 1s ease; /* Smooth image change */
+  transition: background-image 1s ease; /* Smooth transition effect for background image change */
 }
 
 body {
-  background-color: rgba(33, 33, 33, 0.4);
+  background-color: rgba(
+    33,
+    33,
+    33,
+    0.4
+  ); /* Semi-transparent dark background color as an overlay, ensuring the white text stands out better against iamge */
 }
 
 footer {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0
+  ); /* Fully transparent background color */
 }
 
 #introduction-text {
-  max-width: 700px;
-  width: 80vw;
-  color: white;
-  font-size: 1rem;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  max-width: 700px; /* Maximum width of the container */
+  width: 80vw; /* Responsive width */
+  color: white; /* Text color */
+  font-size: 1rem; /* Font size */
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; /* Text shadow for better readability */
 }
 
 #introduction-text h1 {
-  margin-top: 0;
-  font-weight: bold;
-  font-size: 3rem;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  margin-top: 0; /* No top margin */
+  font-weight: bold; /* Bold text */
+  font-size: 3rem; /* Large font size */
 }
 
 #best-selling-offers {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap; /* Ensure wrapping is enabled */
-  gap: 45px; /* Adjusted gap to make wrapping easier */
-  justify-content: center; /* Centers the content */
-  align-items: center;
-  width: 100%; /* Set width to 100% for responsive design */
-  max-width: 1200px; /* Maximum width to control layout */
-  height: auto; /* Height set to auto to accommodate content */
+  margin-top: 20px; /* Top margin */
+  display: flex; /* Flexbox layout */
+  flex-wrap: wrap; /* Enable wrapping so that offer cards are responsive */
+  gap: 45px; /* Gap between items */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Maximum width */
+  height: auto; /* Automatic height based on content */
 }
 
 .offer-card {
-  background-color: rgba(180, 194, 211, 0.85);
-  width: 300px;
-  height: 350px; /* Adjust height as needed, or set to auto */
-  border-radius: 10px;
-  transition: 0.5s; /* Added 's' for seconds */
-  padding: 15px;
-  box-sizing: border-box; /* Ensures padding is included in width */
+  background-color: rgba(
+    180,
+    194,
+    211,
+    0.85
+  ); /* Semi-transparent background color so that the background image is still the main focus */
+  width: 300px; /* Fixed width */
+  height: 360px; /* Fixed height */
+  border-radius: 10px; /* Rounded corners */
+  transition: border 0.5s; /* Transition for border effect */
+  padding: 15px; /* Padding inside the card */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  cursor: pointer;
+  border: 4px solid transparent; /* Add a transparent border */
 }
 
 .offer-card h4,
 h5,
 h6 {
-  margin: 10px;
-  color: black;
-  letter-spacing: 2px;
+  margin: 10px; /* Margin around headings */
+  color: black; /* Text color */
+  letter-spacing: 2px; /* Space between letters to make text more readable */
 }
 
 .offer-card h4 {
-  font-size: 1.4rem;
+  font-size: 1.4rem; /* Font size for h4 */
 }
 
 .offer-card:hover {
-  box-shadow: 0 0 11px rgba(33, 33, 33, 0.4);
+  border-color: rgb(53, 140, 192); /* Change border color on hover */
+  box-shadow: none; /* Remove shadow effect on hover */
 }
 
 .star-rating {
-  color: gold;
-  -webkit-text-stroke-width: 0.75px;
-  -webkit-text-stroke-color: black;
-  font-size: 1.2rem;
+  color: gold; /* Gold color for star rating */
+  -webkit-text-stroke-width: 0.75px; /* Stroke width */
+  -webkit-text-stroke-color: black; /* Stroke color */
+  font-size: 1.2rem; /* Font size */
 }
 
 .offer-price {
-  color: rgb(53, 140, 192);
-  font-weight: bold;
-  -webkit-text-stroke-width: 0.75px;
-  -webkit-text-stroke-color: black;
-  letter-spacing: 2px;
-  font-size: 1.2rem;
-  font-weight: 900;
+  color: rgb(53, 140, 192); /* Text color */
+  font-weight: bold; /* Bold text */
+  -webkit-text-stroke-width: 0.75px; /* Stroke width */
+  -webkit-text-stroke-color: black; /* Stroke color */
+  letter-spacing: 2px; /* Space between letters */
+  font-size: 1.2rem; /* Font size */
+  font-weight: 900; /* Extra bold text */
 }
 
 .travel-description {
-  text-align: justify;
+  text-align: justify; /* Justify text alignment */
 }
 
+/* Media queries to control layout dynamically */
 @media (min-width: 1600px) {
   .offer-card {
-    height: 410px;
+    height: 410px; /* Increased height for larger screens */
   }
 }
 
 @media (max-width: 1600px) {
   #best-selling-offers {
-    gap: 60px;
+    gap: 60px; /* Adjusted gap for medium screens */
   }
 }
 
 @media (max-width: 1400px) {
   #best-selling-offers {
-    gap: 40px;
+    gap: 40px; /* Adjusted gap for smaller screens */
   }
 }
 
 @media (max-width: 1200px) {
   #best-selling-offers {
-    gap: 20px;
+    gap: 20px; /* Adjusted gap for even smaller screens */
   }
 }
 
 @media (max-width: 995px) {
   html {
-    background-size: auto;
+    background-size: auto; /* Adjust background size for smaller screens */
   }
 }
 
 @media (max-width: 768px) {
   .offer-card {
-    height: 300px;
+    height: 300px; /* Reduced height for small screens */
   }
 }
 
 .header {
-  background-color: rgb(53, 140, 192);
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
-  position: fixed;
-  width: 100%;
-  z-index: 3;
-  top: 0;
+  background-color: rgb(53, 140, 192); /* Background color */
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1); /* Shadow effect */
+  position: fixed; /* Fixed position */
+  width: 100%; /* Full width */
+  z-index: 3; /* Layer on top */
+  top: 0; /* Stick to the top */
 }
 
 .header ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  overflow: hidden;
-  background-color: rgba(255, 255, 255, 0);
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin: 0; /* No margin */
+  padding: 0; /* No padding */
+  list-style: none; /* Remove list style */
+  overflow: hidden; /* Prevent overflow */
+  background-color: rgba(255, 255, 255, 0); /* Transparent background */
+  padding-top: 10px; /* Top padding */
+  padding-bottom: 10px; /* Bottom padding */
 }
 
 .header li a {
-  display: block;
-  padding: 20px 20px;
-  color: white;
-  text-shadow: -0.75px 0 black, 0 0.75px black, 0.75px 0 black, 0 -0.75px black;
-  text-decoration: none;
-  transition: all 0.45s;
-  font-size: 1rem;
+  display: block; /* Block display for anchor tags */
+  padding: 20px 20px; /* Padding inside the anchor tags */
+  color: white; /* Text color */
+  text-shadow: -0.75px 0 black, 0 0.75px black, 0.75px 0 black, 0 -0.75px black; /* Text shadow */
+  text-decoration: none; /* Remove underline */
+  transition: all 0.45s; /* Smooth transition effect */
+  font-size: 1rem; /* Font size */
 }
 
 .header li a:hover {
-  background-color: rgb(2, 75, 118);
+  background-color: rgb(
+    2,
+    75,
+    118
+  ); /* Background color on hover making hovered  item standout */
 }
 
 .header .menu-btn a:hover::after {
-  width: 100%;
-  left: 0;
+  width: 100%; /* Full width on hover */
+  left: 0; /* Align to the left */
 }
 
 .header .menu-btn a:hover {
-  color: white;
+  color: white; /* Text color on hover */
 }
 
+/* The icon is created using CSS to change the lettering and create a circular background */
 .header .logo {
-  cursor: default;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2em;
-  padding: 10px 20px;
-  text-decoration: none;
-  color: #cbe6f0;
-  font-family: "Pacifico", cursive;
-  background-color: rgb(95, 182, 191);
-  height: 30px;
-  width: 10px;
-  top: 10px;
-  left: 40px;
-  border-radius: 50%;
-  border: 1px solid black;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  font-weight: bolder;
-  font-size: 1.8rem;
+  cursor: default; /* Default cursor as this is not clickable */
+  position: relative; /* Relative position */
+  display: inline-flex; /* Inline flexbox */
+  align-items: center; /* Center align items */
+  justify-content: center; /* Center align content */
+  font-size: 2em; /* Font size */
+  padding: 10px 20px; /* Padding */
+  text-decoration: none; /* Remove underline */
+  color: #cbe6f0; /* Text color */
+  font-family: "Pacifico", cursive; /* Font family */
+  background-color: rgb(95, 182, 191); /* Background color */
+  height: 30px; /* Fixed height */
+  width: 10px; /* Fixed width */
+  top: 10px; /* Top position */
+  left: 40px; /* Left position */
+  border-radius: 50%; /* Circular shape */
+  border: 1px solid black; /* Border */
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; /* Text shadow */
+  font-weight: bolder; /* Extra bold text */
+  font-size: 1.8rem; /* Font size */
 }
 
-/* menu */
+/* Menu - This tray appears when the handburger button is clicked */
 
 .header .menu {
-  clear: both;
-  max-height: 0;
-  transition: max-height 0.2s ease-out;
+  clear: both; /* Clear floats */
+  max-height: 0; /* Collapse menu */
+  transition: max-height 0.2s ease-out; /* Smooth transition for menu */
 }
 
-/* menu icon */
+/* Menu icon - handburger menu icon */
 
 .header .menu-icon {
-  cursor: pointer;
-  display: inline-block;
-  float: right;
-  padding: 28px 20px;
-  position: relative;
-  user-select: none;
-  top: 12px;
+  cursor: pointer; /* Pointer cursor */
+  display: inline-block; /* Inline block display */
+  padding: 28px 20px; /* Padding */
+  position: relative; /* Relative position */
+  user-select: none; /* Prevent text selection */
+  top: 12px; /* Top position */
 }
 
 .header .menu-icon .navicon {
-  background: white;
-  display: block;
-  height: 2px;
-  position: relative;
-  transition: background 0.2s ease-out;
-  width: 18px;
+  background: white; /* White background */
+  display: block; /* Block display */
+  height: 2px; /* Height */
+  position: relative; /* Relative position */
+  transition: background 0.2s ease-out; /* Smooth background transition */
+  width: 18px; /* Width */
 }
 
 .header .menu-icon .navicon:before,
 .header .menu-icon .navicon:after {
-  background: white;
-  content: "";
-  display: block;
-  height: 100%;
-  position: absolute;
-  transition: all 0.2s ease-out;
-  width: 100%;
+  background: white; /* White background */
+  content: ""; /* Empty content */
+  display: block; /* Block display */
+  height: 100%; /* Full height */
+  position: absolute; /* Absolute position */
+  transition: all 0.2s ease-out; /* Smooth transition */
+  width: 100%; /* Full width */
 }
 
 .header .menu-icon .navicon:before {
-  top: 5px;
+  top: 5px; /* Top position */
 }
 
 .header .menu-icon .navicon:after {
-  top: -5px;
+  top: -5px; /* Bottom position */
 }
 
-/* menu btn */
+/* Menu button */
 
 .header .menu-btn {
-  display: none;
+  display: none; /* Hide menu button */
 }
 
 .header .menu-btn:checked ~ .menu {
-  max-height: 240px;
+  max-height: 240px; /* Expand menu on checked */
 }
 
 .header .menu-btn:checked ~ .menu-icon .navicon {
-  background: transparent;
+  background: transparent; /* Transparent background */
 }
 
 .header .menu-btn:checked ~ .menu-icon .navicon:before {
-  transform: rotate(-45deg);
+  transform: rotate(-45deg); /* Rotate to create cross */
 }
 
 .header .menu-btn:checked ~ .menu-icon .navicon:after {
-  transform: rotate(45deg);
+  transform: rotate(45deg); /* Rotate to create cross */
 }
 
 .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
 .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
-  top: 0;
+  top: 0; /* Align to center */
 }
 
 .header.scrolled {
-  background-color: rgb(53, 140, 192);
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: rgb(53, 140, 192); /* Background color on scroll */
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1); /* Shadow on scroll */
 }
 
+/* When the width is larger than 768px, make the navbar on the home screen transparent and change how it works */
 @media (min-width: 768px) {
   .header {
-    background-color: rgba(255, 255, 255, 0);
-    box-shadow: none;
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0
+    ); /* Transparent background for larger screens */
+    box-shadow: none; /* No shadow */
   }
 
   .header li {
-    float: left;
+    float: left; /* Float left */
   }
+
   .header li a {
-    padding-top: 20px;
-    padding-bottom: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-right: 20px;
-    margin-left: 20px;
-    bottom: 15px;
+    padding-top: 20px; /* Top padding */
+    padding-bottom: 10px; /* Bottom padding */
+    padding-left: 5px; /* Left padding */
+    padding-right: 5px; /* Right padding */
+    margin-right: 20px; /* Right margin */
+    margin-left: 20px; /* Left margin */
+    bottom: 15px; /* Bottom position */
   }
+
   .header .menu {
-    clear: none;
-    float: right;
-    max-height: none;
-    padding-right: 40px;
+    clear: none; /* Do not clear floats */
+    float: right; /* Float to the right */
+    max-height: none; /* No height restriction */
+    padding-right: 40px; /* Right padding */
   }
+
   .header .menu-icon {
-    display: none;
+    display: none; /* Hide menu icon */
   }
 
   .header ul li {
-    top: -10px;
-    list-style: none;
-    display: inline-block;
-    padding-bottom: 2px; /*the space for the gradient*/
-    background: linear-gradient(#cbe6f0, #cbe6f0) center bottom; /*OR bottom right OR bottom left*/
-    background-size: 0% 2px; /*width:0% height:2px*/
-    background-repeat: no-repeat; /* Don't repeat !!*/
-    transition: all 0.45s;
+    top: -10px; /* Top position */
+    list-style: none; /* Remove list style */
+    display: inline-block; /* Inline block display */
+    padding-bottom: 2px; /* Space for gradient */
+    background: linear-gradient(#cbe6f0, #cbe6f0) center bottom; /* Gradient background */
+    background-size: 0% 2px; /* Initial background size */
+    background-repeat: no-repeat; /* Do not repeat background */
+    transition: all 0.45s; /* Smooth transition */
   }
 
   .header ul li a {
-    color: #ffffff;
-    text-decoration: none;
+    color: #ffffff; /* Text color */
+    text-decoration: none; /* Remove underline */
   }
 
   .header ul li:hover {
-    background-size: 100% 2px; /*width:100% height:2px*/
+    background-size: 100% 2px; /* Expand background size on hover */
   }
 
   .header li a:hover {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0
+    ); /* Transparent background on hover */
   }
 }

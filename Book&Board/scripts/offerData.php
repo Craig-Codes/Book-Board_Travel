@@ -1,5 +1,6 @@
 <?php
-// Array of best offer objects which are looped over and output to the screen
+// Array of best offer objects, consumed by multiple views allowing content to be dymanically generated
+// this approach allows data to be edited once, in this file, then automatically updated across the application
 $bestOffers = [
     (object) [
         'id' => 1,

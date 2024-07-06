@@ -1,80 +1,90 @@
+/* Container for the slideshow */
 .slideshow-container {
-  max-width: 800px;
-  position: relative;
-  margin: auto;
+  max-width: 800px; /* Set maximum width of the container */
+  position: relative; /* Relative positioning for absolute children */
+  margin: auto; /* Center the container */
 }
 
+/* Styles for the holiday images */
 .holiday-image {
-  width: 600px;
-  height: 350px;
+  width: 600px; /* Set width of the images */
+  height: 350px; /* Set height of the images */
 }
 
-/* Hide the images by default */
+/* Hide the slides by default */
 .mySlides {
-  display: none;
+  display: none; /* Do not display slides initially */
 }
 
 /* Next & previous buttons */
 .prev,
 .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+  cursor: pointer; /* Cursor changes to pointer on hover */
+  position: absolute; /* Absolute positioning within container */
+  top: 50%; /* Vertically center the buttons */
+  width: auto; /* Auto width */
+  margin-top: -22px; /* Offset the top margin to center vertically */
+  padding: 16px; /* Padding inside the buttons */
+  color: white; /* Text color */
+  font-weight: bold; /* Bold text */
+  font-size: 18px; /* Font size */
+  transition: 0.6s ease; /* Smooth transition effect */
+  border-radius: 0 3px 3px 0; /* Rounded corners */
+  user-select: none; /* Disable text selection */
 }
 
-/* Position the "next button" to the right */
+/* Position the next button to the right */
 .next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+  right: 0; /* Position the button on the right */
+  border-radius: 3px 0 0 3px; /* Rounded corners */
 }
 
+/* Position the previous button to the left */
 .prev {
-  left: 0;
+  left: 0; /* Position the button on the left */
 }
 
-/* On hover, add a black background color with a little bit see-through */
+/* On hover, add a black semi-transparent background color */
 .prev:hover,
 .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.8
+  ); /* Dark semi-transparent background on hover */
 }
 
-/* The dots/bullets/indicators */
+/* The dots current image indicators */
 .dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+  cursor: pointer; /* Cursor changes to pointer on hover */
+  height: 15px; /* Height of the dots */
+  width: 15px; /* Width of the dots */
+  margin: 0 2px; /* Margin between dots */
+  background-color: #bbb; /* Default background color */
+  border-radius: 50%; /* Make the dots circular */
+  display: inline-block; /* Inline-block display */
+  transition: background-color 0.6s ease; /* Smooth background color transition */
 }
 
+/* Active dot and dot on hover */
 .active,
 .dot:hover {
-  background-color: #717171;
+  background-color: #717171; /* Darker background color */
 }
 
-/* Fading animation */
+/* Fading animation for the slides */
 .fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
+  animation-name: fade; /* Apply fade animation */
+  animation-duration: 1.5s; /* Duration of the animation */
 }
 
+/* Keyframes for the fade animation */
 @keyframes fade {
   from {
-    opacity: 0.4;
+    opacity: 0.4; /* Start with partial opacity */
   }
   to {
-    opacity: 1;
+    opacity: 1; /* End with full opacity */
   }
 }

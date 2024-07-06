@@ -1,3 +1,4 @@
+<!-- This partial sets up the page header, and is included in each page -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B&B Travel</title>
+    <!-- Adds a custom logo to the browser tab -->
     <link rel="icon" type="image/x-icon" href="../resources/world.png">
 
+    <!-- Import google fonts using the provided CDN -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -20,6 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- include the generic style sheet to all pages -->
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
