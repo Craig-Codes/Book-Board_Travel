@@ -81,6 +81,12 @@ h6 {
 .offer-card:hover {
   border-color: rgb(53, 140, 192); /* Change border color on hover */
   box-shadow: none; /* Remove shadow effect on hover */
+  background-color: rgba(
+    180,
+    194,
+    211,
+    1
+  ); /* Make background solid for better readability */
 }
 
 .star-rating {
@@ -101,7 +107,7 @@ h6 {
 }
 
 .travel-description {
-  text-align: justify; /* Justify text alignment */
+  text-align: left; /* Justify text alignment */
 }
 
 /* Media queries to control layout dynamically */

@@ -5,9 +5,16 @@
 <?php include '../scripts/offerData.php'; ?>
 
 <main>
-    <h1>Our Offers</h1>
-    <p>This is the offers page content.</p>
+    <section class="container">
+        <h1>Our Offers</h1>
+        <p>Dive into a world of incredible
+            offers, each designed to bring you the best value and unparalleled adventures. Explore a diverse range
+            of breathtaking destinations, from serene beaches and vibrant cities to exotic landscapes and cultural
+            landmarks. Whether you're dreaming of a romantic getaway, an adventurous trek, or a family vacation, our
+            expert team is here to craft the perfect holiday tailored just for you.</p>
+    </section>
     <section>
+
         <div id="best-selling-offers">
 
             <!-- loop through the imported allOffers array of offer objects, to create an offer card for each -->
@@ -16,7 +23,7 @@
                 <div class="offer-details">
                     <h4 class="card-title"><?php echo ($offer->location) ?></h4>
                     <h5 class="star-rating"><?php echo ($offer->starRating) ?></h5>
-                    <h6 class="travel-dates"><?php echo ($offer->dates) ?></h6>
+                    <h5 class="travel-dates"><?php echo ($offer->dates) ?></h5>
                     <p class="travel-description"><?php echo ($offer->description) ?></p>
                     <p class="offer-price"><?php echo ($offer->price) ?></p>
                 </div>
