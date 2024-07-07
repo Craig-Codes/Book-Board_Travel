@@ -1,0 +1,157 @@
+#contact {
+  margin-top: 20px; /* Top margin */
+  display: flex; /* Use flexbox layout */
+  flex-wrap: wrap; /* Enable wrapping of items */
+  gap: 45px; /* Gap between items */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  width: 100%; /* Full width of the container */
+  max-width: 1000px; /* Maximum width to control layout */
+  height: auto; /* Auto height to accommodate content */
+}
+
+.container {
+  max-width: 1000px;
+  width: 80vw;
+  padding-bottom: 20px;
+}
+
+.container p {
+  text-align: left;
+}
+
+/* Styles for each contact card */
+.contact-card {
+  display: flex; /* Use flexbox layout */
+  flex-direction: row; /* Horizontal layout */
+  background-color: white; /* White background color */
+  gap: 10px; /* Gap between elements inside the card */
+  max-width: 1200px; /* Maximum width */
+  width: 80vw; /* 80% of the viewport width */
+  height: 400px; /* Fixed height */
+  border-radius: 10px; /* Rounded corners */
+  transition: 0.5s; /* Smooth transition effect */
+  padding: 20px; /* Padding inside the card */
+  box-sizing: border-box; /* Include padding in the width */
+  box-shadow: 0 0 4px rgba(33, 33, 33, 0.4); /* Shadow effect */
+}
+
+.address {
+  gap: 5px;
+}
+
+/* Heading styles inside the contact card */
+.contact-card h4,
+h5,
+h6 {
+  margin: 0px; /* Margin around headings */
+  margin-left: 10px;
+  margin-right: 10px;
+  letter-spacing: 2px; /* Spacing between letters */
+}
+
+.contact-card p {
+  margin: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Specific style for h4 in the contact card */
+.contact-card h4 {
+  font-size: 1.4rem; /* Font size */
+}
+
+/* Hover effect for the contact card */
+.contact-card:hover {
+  box-shadow: 0 0 10px rgba(33, 33, 33, 0.5); /* Larger shadow on hover */
+}
+
+.contact-details {
+  display: flex; /* Use flexbox layout */
+  flex-grow: 2; /* Allow to grow */
+  flex-direction: column; /* Vertical layout */
+  justify-content: space-evenly;
+}
+
+.contact-image {
+  justify-items: center;
+  align-self: center;
+}
+/* Style for images inside the contact card */
+.contact-image img {
+  width: 400px; /* Fixed width */
+  height: 300px; /* Fixed height */
+  border-radius: 10px; /* Rounded corners */
+  border: 3px solid rgb(53, 140, 192);
+}
+
+/* Media query for larger screens */
+
+@media (max-width: 999px) {
+  .contact-image img {
+    width: 325px; /* Increased width for larger screens */
+    height: 243.75px;
+  }
+
+  .contact-image {
+    justify-content: space-evenly; /* Space items evenly */
+  }
+}
+
+@media (max-width: 912px) {
+  .contact-card {
+    height: 450px;
+  }
+}
+
+@media (max-width: 800px) {
+  .contact-card {
+    height: 675px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contact-details {
+    flex-grow: 1; /* equal portions of box for details and image */
+  }
+
+  .contact-details h4,
+  h5,
+  .contact-card p,
+  .contact-price {
+    padding: 0px;
+    margin: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .contact-image {
+    justify-content: space-between;
+  }
+  .contact-image img {
+    width: 400px; /* Increased width for larger screens */
+    height: 300px;
+  }
+}
+
+@media (max-width: 580px) {
+  .contact-image img {
+    width: 325px; /* Increased width for larger screens */
+    height: 243.75px;
+  }
+
+  .contact-card {
+    height: 600px;
+  }
+}
+
+@media (max-width: 450px) {
+  .contact-image img {
+    width: 275px; /* Increased width for larger screens */
+    height: 206.25px;
+  }
+
+  .contact-card {
+    height: 625px;
+  }
+}

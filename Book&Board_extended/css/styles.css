@@ -1,0 +1,308 @@
+/* These styles are shared across all pages */
+
+/* Setup the overall HTML and Body elements - 
+Prevents overscroll behavior */
+html,
+body {
+  overscroll-behavior: none;
+}
+
+/* Styles for the HTML element */
+html {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  height: 100%; /* Full height */
+  font-family: "Lato", sans-serif; /* Default font */
+  background-color: #b4c2d3; /* Background color */
+  color: rgb(0, 33, 71);
+}
+
+/* Styles for the body element */
+body {
+  min-height: 100vh; /* Minimum height to fill the viewport */
+  margin: 0; /* Remove default margin */
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Vertical layout */
+  justify-content: space-evenly; /* Space out content evenly */
+}
+
+/* Styles for the main element */
+main {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Vertical layout */
+  flex: 1; /* Allow to grow */
+  align-items: center; /* Center items horizontally */
+  justify-content: space-evenly; /* Space out content evenly */
+  text-align: center; /* Center text */
+  padding: 20px; /* Padding around content */
+  margin-top: 80px; /* Top margin */
+}
+
+/* Styles for the footer element */
+footer {
+  display: flex; /* Flexbox layout */
+  min-height: 50px; /* Minimum height */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  text-align: center; /* Center text */
+  color: white; /* Text color */
+  font-size: 1rem; /* Font size */
+  text-shadow: -1px 0 rgb(0, 33, 71), 0 1px rgb(0, 33, 71), 1px 0 rgb(0, 33, 71),
+    0 -1px rgb(0, 33, 71); /* Text shadow */
+  background-color: rgb(53, 140, 192); /* Background color */
+}
+
+/* Styles for the h1 element */
+h1 {
+  font-family: "Railway", sans-serif; /* Font for h1 */
+}
+
+/* Styles for heading elements h2 to h6 */
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "lato", sans-serif; /* Font for headings */
+}
+
+/* Navbar styling used across all pages */
+.header {
+  background-color: rgb(53, 140, 192); /* Background color */
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.4); /* Box shadow */
+  position: fixed; /* Fixed position */
+  width: 100%; /* Full width */
+  z-index: 3; /* Ensure on top */
+  top: 0; /* Align to top */
+}
+
+/* Styles for the header list */
+.header ul {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  list-style: none; /* Remove default list style */
+  overflow: hidden; /* Hide overflow */
+  background-color: rgba(255, 255, 255, 0); /* Transparent background */
+  padding-top: 10px; /* Top padding */
+  padding-bottom: 10px; /* Bottom padding */
+}
+
+/* Styles for links inside the header list */
+.header li a {
+  display: block; /* Block display */
+  padding: 20px 20px; /* Padding */
+  color: white; /* Text color */
+  text-shadow: -0.75px 0 rgb(0, 33, 71), 0 0.75px rgb(0, 33, 71),
+    0.75px 0 rgb(0, 33, 71), 0 -0.75px rgb(0, 33, 71); /* Text shadow */
+  text-decoration: none; /* Remove underline */
+  transition: all 0.45s; /* Transition effect */
+  font-size: 1rem; /* Font size */
+}
+
+/* Hover effect for links inside the header list */
+.header li a:hover {
+  background-color: rgb(0, 33, 71); /* Background color on hover */
+}
+
+/* Hover effect for menu button */
+.header .menu-btn a:hover::after {
+  width: 100%; /* Full width on hover */
+  left: 0; /* Align to left */
+}
+
+/* Hover effect for menu button */
+.header .menu-btn a:hover {
+  color: white; /* Text color on hover */
+}
+
+/* Styles for the logo */
+.header .logo {
+  cursor: default; /* Default cursor */
+  position: relative; /* Relative position */
+  display: inline-flex; /* Inline flexbox layout */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  font-size: 2em; /* Font size */
+  padding: 10px 20px; /* Padding */
+  text-decoration: none; /* Remove underline */
+  color: #cbe6f0; /* Text color */
+  font-family: "Pacifico", cursive; /* Font family */
+  background-color: rgb(95, 182, 191); /* Background color */
+  height: 30px; /* Fixed height */
+  width: 10px; /* Fixed width */
+  top: 10px; /* Top position */
+  left: 40px; /* Left position */
+  border-radius: 50%; /* Rounded corners */
+  border: 1px solid rgb(0, 33, 71); /* Border */
+  text-shadow: -1px 0 rgb(0, 33, 71), 0 1px rgb(0, 33, 71), 1px 0 rgb(0, 33, 71),
+    0 -1px rgb(0, 33, 71); /* Text shadow */
+  font-weight: bolder; /* Bold font weight */
+  font-size: 1.8rem; /* Font size */
+}
+
+/* Menu styles */
+.header .menu {
+  clear: both; /* Clear float */
+  max-height: 0; /* Initially hidden */
+  transition: max-height 0.2s ease-out; /* Smooth transition */
+}
+
+/* Menu icon styles */
+.header .menu-icon {
+  cursor: pointer; /* Pointer cursor */
+  display: inline-block; /* Inline block display */
+  float: right; /* Float right */
+  padding: 28px 20px; /* Padding */
+  position: relative; /* Relative position */
+  user-select: none; /* Prevent text selection */
+  top: 12px; /* Top position */
+}
+
+/* Navicon styles */
+.header .menu-icon .navicon {
+  background: white; /* Background color */
+  display: block; /* Block display */
+  height: 2px; /* Height */
+  position: relative; /* Relative position */
+  transition: background 0.2s ease-out; /* Smooth transition */
+  width: 18px; /* Width */
+}
+
+/* Before and after pseudo-elements for navicon */
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: white; /* Background color */
+  content: ""; /* Empty content */
+  display: block; /* Block display */
+  height: 100%; /* Full height */
+  position: absolute; /* Absolute position */
+  transition: all 0.2s ease-out; /* Smooth transition */
+  width: 100%; /* Full width */
+}
+
+/* Before pseudo-element for navicon */
+.header .menu-icon .navicon:before {
+  top: 5px; /* Top position */
+}
+
+/* After pseudo-element for navicon */
+.header .menu-icon .navicon:after {
+  top: -5px; /* Top position */
+}
+
+/* Menu button styles */
+.header .menu-btn {
+  display: none; /* Hidden by default */
+}
+
+/* Menu styles when menu button is checked */
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px; /* Show menu */
+}
+
+/* Navicon styles when menu button is checked */
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent; /* Transparent background */
+}
+
+/* Navicon before pseudo-element when menu button is checked */
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg); /* Rotate */
+}
+
+/* Navicon after pseudo-element when menu button is checked */
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg); /* Rotate */
+}
+
+/* Navicon before and after pseudo-elements when menu button is checked */
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0; /* Align to top */
+}
+
+/* Header styles when scrolled */
+.header.scrolled {
+  background-color: rgb(53, 140, 192); /* Background color */
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+/* Media querys control overall font size. All fonts have used rem for sizing,
+which allows a simple font-size at different breakpoints, to influence all font sizing across all pages */
+
+/* Media query for large screens */
+@media (min-width: 1600px) {
+  html {
+    font-size: 18px; /* Increase font size */
+  }
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Decrease font size */
+  }
+}
+
+/* Media query for medium and large screens */
+@media (min-width: 768px) {
+  .header {
+    background-color: rgb(53, 140, 192); /* Background color */
+  }
+
+  .header li {
+    float: left; /* Float left */
+  }
+
+  .header li a {
+    padding-top: 20px; /* Top padding */
+    padding-bottom: 10px; /* Bottom padding */
+    padding-left: 5px; /* Left padding */
+    padding-right: 5px; /* Right padding */
+    margin-right: 20px; /* Right margin */
+    margin-left: 20px; /* Left margin */
+    bottom: 15px; /* Bottom position */
+    font-family: "Lato", sans-serif;
+    font-size: 1.1rem;
+  }
+
+  .header .menu {
+    clear: none; /* Do not clear float */
+    float: right; /* Float right */
+    max-height: none; /* Remove height restriction */
+    padding-right: 40px; /* Right padding */
+  }
+
+  .header .menu-icon {
+    display: none; /* Hide menu icon */
+  }
+
+  .header ul li {
+    top: -10px; /* Top position */
+    list-style: none; /* Remove list style */
+    display: inline-block; /* Inline block display */
+    padding-bottom: 2px; /* Bottom padding for gradient */
+    background: linear-gradient(#cbe6f0, #cbe6f0) center bottom; /* Gradient background */
+    background-size: 0% 2px; /* Initial background size */
+    background-repeat: no-repeat; /* Do not repeat background */
+    transition: all 0.45s; /* Smooth transition */
+  }
+
+  .header ul li a {
+    color: #ffffff; /* Text color */
+    text-decoration: none; /* Remove underline */
+  }
+
+  .header ul li:hover {
+    background-size: 100% 2px; /* Full background size on hover */
+  }
+
+  .header li a:hover {
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0
+    ); /* Transparent background on hover */
+  }
+}

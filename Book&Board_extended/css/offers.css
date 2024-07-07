@@ -1,0 +1,203 @@
+/* Container for best-selling offers */
+#best-selling-offers {
+  margin-top: 20px; /* Top margin */
+  display: flex; /* Use flexbox layout */
+  flex-wrap: wrap; /* Enable wrapping of items */
+  gap: 45px; /* Gap between items */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  width: 100%; /* Full width of the container */
+  max-width: 1000px; /* Maximum width to control layout */
+  height: auto; /* Auto height to accommodate content */
+}
+
+.container {
+  max-width: 1000px;
+  width: 80vw;
+  padding-bottom: 20px;
+}
+
+.container p {
+  text-align: left;
+}
+
+/* Styles for each offer card */
+.offer-card {
+  display: flex; /* Use flexbox layout */
+  flex-direction: row; /* Horizontal layout */
+  background-color: white; /* White background color */
+  gap: 30px; /* Gap between elements inside the card */
+  max-width: 1200px; /* Maximum width */
+  width: 80vw; /* 80% of the viewport width */
+  height: 400px; /* Fixed height */
+  border-radius: 10px; /* Rounded corners */
+  transition: 0.5s; /* Smooth transition effect */
+  padding: 20px; /* Padding inside the card */
+  box-sizing: border-box; /* Include padding in the width */
+  box-shadow: 0 0 4px rgba(33, 33, 33, 0.4); /* Shadow effect */
+}
+
+/* Heading styles inside the offer card */
+.offer-card h4,
+h5,
+h6 {
+  margin: 0px; /* Margin around headings */
+  margin-left: 10px;
+  margin-right: 10px;
+  letter-spacing: 2px; /* Spacing between letters */
+}
+
+.offer-card p {
+  margin: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Specific style for h4 in the offer card */
+.offer-card h4 {
+  font-size: 1.4rem; /* Font size */
+}
+
+/* Hover effect for the offer card */
+.offer-card:hover {
+  box-shadow: 0 0 10px rgba(33, 33, 33, 0.5); /* Larger shadow on hover */
+}
+
+/* Star rating style */
+.star-rating {
+  color: gold; /* Gold color for stars */
+  -webkit-text-stroke-width: 0.75px; /* Stroke width */
+  -webkit-text-stroke-color: black; /* Stroke color */
+  font-size: 1.2rem; /* Font size */
+}
+
+/* Offer price style */
+.offer-price {
+  color: rgb(53, 140, 192); /* Text color */
+  font-weight: bold; /* Bold font weight */
+  letter-spacing: 2px; /* Spacing between letters */
+  font-size: 1.2rem; /* Font size */
+  font-weight: 900; /* Extra bold font weight */
+  padding: 0px;
+  margin: 0px;
+}
+
+/* Travel description style */
+.travel-description {
+  text-align: left; /* Justified text alignment */
+}
+
+.travel-dates {
+  font-size: 1.1rem;
+}
+
+/* Container for offer details */
+.offer-details {
+  display: flex; /* Use flexbox layout */
+  flex-grow: 2; /* Allow to grow */
+  flex-direction: column; /* Vertical layout */
+  justify-content: space-evenly;
+}
+
+/* Container for offer image */
+.offer-image {
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Vertical layout */
+  flex-grow: 1.25; /* Allow to grow */
+  align-items: center; /* Center items horizontally */
+  justify-content: space-between; /* Space items evenly */
+}
+
+/* Style for images inside the offer card */
+.offer-image img {
+  width: 400px; /* Fixed width */
+  height: 300px; /* Fixed height */
+  border-radius: 10px; /* Rounded corners */
+  border: 3px solid rgb(53, 140, 192);
+}
+
+.offer-card button {
+  background-color: white;
+  border: 2px solid rgb(95, 182, 191);
+  color: rgb(95, 182, 191);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.25s ease-in-out;
+  font-weight: bold;
+}
+
+.offer-card button:hover {
+  background-color: rgba(95, 182, 191, 0.3);
+}
+
+/* Media query for larger screens */
+
+@media (max-width: 999px) {
+  .offer-image img {
+    width: 325px; /* Increased width for larger screens */
+    height: 243.75px;
+  }
+
+  .offer-image {
+    justify-content: space-evenly; /* Space items evenly */
+  }
+}
+
+@media (max-width: 912px) {
+  .offer-card {
+    height: 450px;
+  }
+}
+
+@media (max-width: 800px) {
+  .offer-card {
+    height: 675px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .offer-details {
+    flex-grow: 1; /* equal portions of box for details and image */
+  }
+
+  .offer-details h4,
+  h5,
+  .offer-card p,
+  .offer-price {
+    padding: 0px;
+    margin: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .offer-image {
+    justify-content: space-between;
+  }
+  .offer-image img {
+    width: 400px; /* Increased width for larger screens */
+    height: 300px;
+  }
+}
+
+@media (max-width: 580px) {
+  .offer-image img {
+    width: 325px; /* Increased width for larger screens */
+    height: 243.75px;
+  }
+
+  .offer-card {
+    height: 600px;
+  }
+}
+
+@media (max-width: 450px) {
+  .offer-image img {
+    width: 275px; /* Increased width for larger screens */
+    height: 206.25px;
+  }
+
+  .offer-card {
+    height: 625px;
+  }
+}
