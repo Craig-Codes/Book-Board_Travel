@@ -262,6 +262,8 @@ which allows a simple font-size at different breakpoints, to influence all font 
     margin-right: 20px; /* Right margin */
     margin-left: 20px; /* Left margin */
     bottom: 15px; /* Bottom position */
+    font-family: "Lato", sans-serif;
+    font-size: 1.1rem;
   }
 
   .header .menu {

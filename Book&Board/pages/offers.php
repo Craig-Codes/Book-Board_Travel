@@ -1,8 +1,11 @@
-<?php include '../partials/header.php'; ?>
-<?php include '../partials/navbar.php'; ?>
+<?php
+include '../partials/header.php';
+include '../partials/navbar.php';
+?>
+
 <link rel="stylesheet" href="../css/offers.css">
 <!-- offerData.php contains an array of all the offer objects -->
-<?php include '../scripts/offerData.php'; ?>
+<?php include '../data/offerData.php'; ?>
 
 <main>
     <section class="container">

@@ -1,4 +1,4 @@
-<?php include '../scripts/offerData.php';
+<?php include '../data/offerData.php';
 
 // we can get the 3 latest offers by getting the last 3 entires from the allOffers array (in offerData.php)
 $latestOffers = array_slice($allOffers, -3);

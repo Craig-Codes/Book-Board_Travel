@@ -1,6 +1,6 @@
 <?php
 // offerData.php contains an array of all the offer objects
-include '../scripts/offerData.php';
+include '../data/offerData.php';
 
 
 // Capture the id parameter from the URL - anything other than an integer defaults to 0

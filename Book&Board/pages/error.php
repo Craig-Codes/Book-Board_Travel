@@ -1,5 +1,9 @@
-<?php include '../partials/header.php'; ?>
-<?php include '../partials/navbar.php'; ?>
+<!-- Include partials -->
+<?php
+include '../partials/header.php';
+include '../partials/navbar.php';
+?>
+
 <link rel="stylesheet" href="../css/error.css">
 <main>
     <section id="error">

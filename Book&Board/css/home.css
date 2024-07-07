@@ -175,7 +175,7 @@ h6 {
     0.75px 0 rgb(0, 33, 71), 0 -0.75px rgb(0, 33, 71); /* Text shadow */
   text-decoration: none; /* Remove underline */
   transition: all 0.45s; /* Smooth transition effect */
-  font-size: 1rem; /* Font size */
+  font-size: 1.1rem; /* Font size */
 }
 
 .header li a:hover {
