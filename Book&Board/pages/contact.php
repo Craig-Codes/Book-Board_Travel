@@ -1,7 +1,7 @@
 <!-- include partials and branch location data -->
 <?php include '../partials/header.php';
 include '../partials/navbar.php';
-include '../data/locations.php' ?>
+include '../data/locationData.php' ?>
 
 <link rel="stylesheet" href="../css/contact.css">
 <main>
