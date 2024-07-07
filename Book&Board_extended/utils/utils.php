@@ -1,6 +1,5 @@
-<!-- This script provides utility functions which can be used across pages -->
 <?php
-
+// This script provides utility functions which can be used across pages
 // function takes the travel time in minutes and makes it human readable
 function convertMinutesToHoursAndMinutes($minutes)
 {
