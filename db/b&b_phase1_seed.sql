@@ -52,7 +52,7 @@ CREATE TABLE offer_facilities (
     FOREIGN KEY (offer_id) REFERENCES offers(id)
 );
 
-SEED data
+-- SEED data
 INSERT INTO locations (title, street, city, county, postcode, phone, email, weekHours, weekendHours, image) VALUES
 ('Head Office', '1 King Street', 'London', 'Greater London', 'W1B 2EL', '020 7153 9000', 'hq@b&b-travel.co.uk', '9-5', 'Closed', '../resources/hq.webp'),
 ('Edinburgh', '1 Princes Street', 'Edinburgh', 'West Lothian', 'EH1 1AB', '0131 242 8200', 'edinburgh@b&b-travel.co.uk', '8-5', 'Saturday 10-4, Closed Sunday', '../resources/edinburgh.webp'),
