@@ -28,7 +28,8 @@ include '../partials/navbar.php';
                     <h5 class="star-rating"><?php echo ($offer->starRating) ?></h5>
                     <h5 class="travel-dates"><?php echo ($offer->dates) ?></h5>
                     <p class="travel-description"><?php echo ($offer->description) ?></p>
-                    <p class="offer-price"><?php echo ($offer->price) ?></p>
+                    <!-- The number format is a built in php method to make numeriacal values more readible, adding commas -->
+                    <p class="offer-price">£<?php echo number_format($offer->price) ?></p>
                 </div>
                 <div class="offer-image">
                     <!-- We only want to show the first image on this page, so index 0 is used -->

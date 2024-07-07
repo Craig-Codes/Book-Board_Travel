@@ -1,6 +1,8 @@
 <?php
 // offerData.php contains an array of all the offer objects
 include '../data/offerData.php';
+// utils.php contains a function to convert travel time into a human readible string
+include '../utils/utils.php';
 
 
 // Capture the id parameter from the URL - anything other than an integer defaults to 0
@@ -39,10 +41,17 @@ if ($offer) {
 <main>
     <section id="offer">
         <h4 class="card-title"><?php echo $offer->location; ?></h4>
-        <h5 class="star-rating"><span> <?php echo $offer->starRating; ?></span></h5>
+        <h5 class="star-rating"><span><?php echo $offer->starRating; ?></span></h5>
         <h5 class="travel-dates">Dates: <?php echo $offer->dates; ?></h5>
         <p class="travel-description"><?php echo $offer->description; ?></p>
-        <p class="offer-price"><?php echo ($offer->price) ?></p>
+        <!-- The number format is a built in php method to make numeriacal values more readible, adding commas -->
+        <p class="offer-price">£<?php echo number_format($offer->price) ?></p>
+        <!-- convert travel time into human readable time -->
+        <p class="travel-time">⏱️ Travel time: <?php echo convertMinutesToHoursAndMinutes($offer->travelTime); ?></p>
+        <!-- convert travel stops into "direct" if 0, making it more human readible -->
+        <p class="travel-stops">✈️ Flight stops: <?php echo $offer->travelStops > 0 ? $offer->travelStops : "Direct"; ?>
+        </p>
+
         <div class="content-container">
             <div class="slideshow-container">
                 <!-- create a carousel to display all images about the destination-->
