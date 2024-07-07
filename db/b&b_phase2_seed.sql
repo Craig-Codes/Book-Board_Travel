@@ -1,6 +1,10 @@
+-- This script is run by the docker database container when it is built, providing the tables
+-- and seed data each time we spin up the containers. This allows efficient testing of the system
+
 -- We want to start the transaction of creating the tables and adding the seed data to database in docker container
 START TRANSACTION; 
 
+-- Create the user table, storing hashed passwords and salt rather than plaintext
 CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -10,7 +14,7 @@ CREATE TABLE user (
     salt VARCHAR(255) NOT NULL
 );
 
-
+-- Create the location table
 CREATE TABLE location (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -25,6 +29,7 @@ CREATE TABLE location (
     image_path VARCHAR(255) NOT NULL
 );
 
+-- Create the offer table, indexing rows used for searching (for speed benefits)
 CREATE TABLE offer (
     id INT PRIMARY KEY,
     location VARCHAR(100) NOT NULL,
@@ -40,7 +45,7 @@ CREATE TABLE offer (
     INDEX (travel_stops)
 );
 
-
+-- Create off_images table, linking offers to there multiple image paths on the server
 CREATE TABLE offer_images (
     id INT AUTO_INCREMENT PRIMARY KEY,
     offer_id INT,
@@ -48,6 +53,7 @@ CREATE TABLE offer_images (
     FOREIGN KEY (offer_id) REFERENCES offer(id)
 );
 
+-- Create off_activities table, linking offers to there multiple activities
 CREATE TABLE offer_activities (
     id INT AUTO_INCREMENT PRIMARY KEY,
     offer_id INT,
@@ -55,6 +61,7 @@ CREATE TABLE offer_activities (
     FOREIGN KEY (offer_id) REFERENCES offer(id)
 );
 
+-- Create off_facilities table, linking offers to there multiple facilities
 CREATE TABLE offer_facilities (
     id INT AUTO_INCREMENT PRIMARY KEY,
     offer_id INT,
@@ -62,6 +69,7 @@ CREATE TABLE offer_facilities (
     FOREIGN KEY (offer_id) REFERENCES offer(id)
 );
 
+-- Create booking table, used as a join table to connect users and offers 
 CREATE TABLE booking (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
