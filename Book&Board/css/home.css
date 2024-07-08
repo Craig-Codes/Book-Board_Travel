@@ -299,6 +299,12 @@ h6 {
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1); /* Shadow on scroll */
 }
 
+@media (min-width: 1600px) {
+  .offer-card {
+    height: 450px;
+  }
+}
+
 /* When the width is larger than 768px, make the navbar on the home screen transparent and change how it works */
 @media (min-width: 768px) {
   .header {
