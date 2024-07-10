@@ -4,6 +4,8 @@ include '../partials/navbar.php';
 include '../data/locationData.php' ?>
 
 <link rel="stylesheet" href="../css/contact.css">
+<title>B&B Travel - Contact</title>
+</head>
 <main>
     <section class="container">
         <h1>Contact Us</h1>
@@ -25,15 +27,15 @@ include '../data/locationData.php' ?>
             you
             in person. We look forward to helping you create unforgettable travel experiences.
         </p>
-
     </section>
-    <section>
-
+    <section aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Our Locations</h2>
         <div id="contact">
             <?php foreach ($locations as $location) { ?>
-            <div class="contact-card">
+            <div class="contact-card" role="region" aria-labelledby="location-<?php echo $location->id; ?>">
                 <div class="contact-details">
-                    <h4 class="card-title"><?php echo ($location->title) ?></h4>
+                    <h4 id="location-<?php echo $location->id; ?>" class="card-title"><?php echo ($location->title) ?>
+                    </h4>
                     <div class="address">
                         <h5 class="card-street"><?php echo ($location->street) ?></h5>
                         <h5 class="card-city"><?php echo ($location->city) ?></h5>
@@ -53,5 +55,6 @@ include '../data/locationData.php' ?>
         </div>
     </section>
 </main>
+
 
 <?php include '../partials/footer.php'; ?>

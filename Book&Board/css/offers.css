@@ -65,15 +65,13 @@ h6 {
 
 /* Star rating style */
 .star-rating {
-  color: gold; /* Gold color for stars */
-  -webkit-text-stroke-width: 0.75px; /* Stroke width */
-  -webkit-text-stroke-color: black; /* Stroke color */
+  color: blue; /* Blue color for stars */
   font-size: 1.2rem; /* Font size */
 }
 
 /* Offer price style */
 .offer-price {
-  color: rgb(53, 140, 192); /* Text color */
+  color: blue; /* Text color */
   font-weight: bold; /* Bold font weight */
   letter-spacing: 2px; /* Spacing between letters */
   font-size: 1.2rem; /* Font size */
@@ -118,8 +116,8 @@ h6 {
 
 .offer-card button {
   background-color: white;
-  border: 2px solid rgb(95, 182, 191);
-  color: rgb(95, 182, 191);
+  border: 2px solid blue;
+  color: blue;
   cursor: pointer;
   padding: 10px;
   border-radius: 10px;
@@ -128,7 +126,13 @@ h6 {
 }
 
 .offer-card button:hover {
-  background-color: rgba(95, 182, 191, 0.3);
+  background-color: rgba(0, 0, 255, 0.3);
+}
+
+/* Allows buttons to be accessible without a mouse, showing focus on user tab */
+.offer-card button:focus {
+  outline: 2px solid #0056b3; /* Highlight with a solid outline */
+  outline-offset: 2px; /* Offset to make the outline more visible */
 }
 
 /* Media query for larger screens */

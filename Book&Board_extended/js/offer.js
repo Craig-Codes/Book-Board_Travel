@@ -41,3 +41,11 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block"; // show the image
   dots[slideIndex - 1].className += " active"; // highlight the marker dot by adding the active class
 }
+
+// Code allows the carusol navigation dots to work for non mouse controls (WCAG 2.0 accessbility compliant)
+function dotKeydown(event, slideIndex) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault(); // Prevent the default action for the space key
+    currentSlide(slideIndex);
+  }
+}

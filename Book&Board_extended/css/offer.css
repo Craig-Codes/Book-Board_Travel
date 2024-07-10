@@ -37,9 +37,7 @@ h6 {
 
 /* Star rating style */
 .star-rating {
-  color: gold; /* Gold color for stars */
-  -webkit-text-stroke-width: 0.75px; /* Stroke width */
-  -webkit-text-stroke-color: black; /* Stroke color */
+  color: blue; /* Blue color for stars */
   font-size: 1.2rem; /* Font size */
 }
 
@@ -83,6 +81,11 @@ h6 {
   text-align: center; /* Center-aligned text */
   position: relative; /* Relative positioning */
   bottom: 25px; /* Position from the bottom */
+}
+
+.dot:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
 }
 
 /* Styles for the holiday images */

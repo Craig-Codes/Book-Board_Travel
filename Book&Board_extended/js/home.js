@@ -36,8 +36,26 @@ const allOffers = document.getElementsByClassName("offer-card"); // get all the 
 
 // create an array from the HTML collection so that is can be looped over declaratively
 Array.from(allOffers).forEach((offer) => {
-  offer.addEventListener("click", () => {
+  // We need to make sure these elements are navigatable without a mouse for WCAG 2.0 accessiblity standards
+  // Ensure the element is focusable
+  offer.setAttribute("tabindex", "0");
+  // Add an ARIA role
+  offer.setAttribute("role", "button");
+  // Add an accessible label
+  offer.setAttribute("aria-label", `Offer ${offer.dataset.id}`);
+
+  const navigateToOffer = () => {
     const offerId = offer.dataset.id; // get the ID from the data attribute
     window.location.href = `./offer.php?id=${offerId}`; // navigate to offer.php with the ID as a URL parameter
+  };
+
+  offer.addEventListener("click", navigateToOffer);
+
+  // Add keyboard event listener for Enter and Space keys
+  offer.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault(); // Prevent default behavior for Space key
+      navigateToOffer();
+    }
   });
 });

@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B&B Travel</title>
     <!-- Adds a custom logo to the browser tab -->
     <link rel="icon" type="image/x-icon" href="../resources/world.png">
 
@@ -25,6 +24,5 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <!-- include the generic style sheet to all pages -->
     <link rel="stylesheet" href="../css/styles.css">
-</head>
 
-<body>
+    <!-- The head tag is not closed off, allowing each individual page to add the title tags and their own custom CSS -->
