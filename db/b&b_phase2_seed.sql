@@ -35,6 +35,7 @@ CREATE TABLE offer (
     location VARCHAR(100) NOT NULL,
     star_rating VARCHAR(20) NOT NULL,
     dates VARCHAR(100) NOT NULL,
+    nights INT,
     description TEXT NOT NULL,
     price INT NOT NULL,
     travel_time INT NOT NULL,
@@ -89,17 +90,18 @@ INSERT INTO location (title, street, city, county, postcode, phone, email, week_
 ('Manchester', '23 Stadium Place', 'Manchester', 'Greater Manchester', 'M4 3AJ', '0161 455 1900', 'manchester@b&b-travel.co.uk', '8-5', 'Saturday 8-5, Closed', '../resources/manchester.webp'),
 ('Oxford', '3 Castle Terrace', 'Oxford', 'Oxforshire', 'OX1 1PE', '01865 240899', 'oxford@b&b-travel.co.uk', '8-5', 'Saturday 8-5, Closed', '../resources/oxford.webp');
 
-INSERT INTO offer (id, location, star_rating, dates, description, price, travel_time, travel_stops) VALUES
-(1, 'Paris - France', '★★★★', '5th - 15th October 2024 (10 Days)', 'Experience the romance and charm of Paris. Visit iconic landmarks like the Eiffel Tower and the Louvre, and indulge in exquisite French cuisine and luxury shopping.', 3500, 80, 0),
-(2, 'Sydney - Australia', '★★★★★', '10th - 20th November 2024 (10 Days)', 'Explore the vibrant city of Sydney, from the iconic Opera House to the stunning beaches of Bondi. Enjoy world-class dining, shopping, and cultural experiences.', 4500, 1350, 1),
-(3, 'New York - USA', '★★★★', '20th - 30th December 2024 (10 Days)', 'Discover the excitement of New York City, from Broadway shows to Central Park. Experience the city that never sleeps with endless entertainment, dining, and shopping options.', 4000, 480, 0),
-(4, 'Rome - Italy', '★★★★', '5th - 15th January 2025 (10 Days)', 'Immerse yourself in the history and culture of Rome. Visit ancient landmarks like the Colosseum and the Vatican, and enjoy authentic Italian cuisine and hospitality.', 3200, 150, 0),
-(5, 'Santorini - Greece', '★★★★★', '1st - 10th February 2025 (10 Days)', 'Relax in the stunning island of Santorini with its breathtaking sunsets and beautiful beaches. Enjoy luxurious accommodations and the best of Greek cuisine and culture.', 3700, 235, 0),
-(6, 'Dubai - UAE', '★★★★★', '10th - 20th May 2025 (10 Days)', 'Discover the opulence and modernity of Dubai. From the Burj Khalifa to luxury shopping malls and desert safaris, experience the best of this dynamic city.', 5000, 410, 0),
-(7, 'Phuket - Thailand', '★★★★', '5th - 15th June 2025 (10 Days)', 'Relax in the tropical paradise of Phuket. Enjoy pristine beaches, vibrant nightlife, and delicious Thai cuisine in this beautiful island destination.', 2800, 785, 1),
-(8, 'Maldives', '★★★★★', '2nd - 12th August 2024 (10 Days)', 'This incredible 5 star once in a lifetime experience is not to be missed! Relax in luxury with your very own private pool, or experience all the islands have to offer from scuba diving to watching giant sea turtles hatch on the beautiful unspoilt beaches. Perfect for honeymoons!', 4000, 630, 1),
-(9, 'Tokyo - Japan', '★★★', '1st - 14th September 2024 (14 Days)', 'Experience the pinnacle of luxury in Tokyo, where cutting-edge innovation meets timeless tradition. Indulge in world-class dining, opulent accommodations, and exclusive shopping experiences, all set against the backdrop of the citys dazzling skyline and serene gardens.', 3000, 705, 0),
-(10, 'Monaco', '★★★★', '15th - 18th September 2024 (4 Days)', 'Discover Monaco, renowned for its stunning cultural landmarks, luxurious casinos, and breathtaking vistas of the iconic French Riviera. Steeped in history, this elegant city gracefully combines timeless charm with modern sophistication, all set to the faint hum of race cars.', 500, 115, 0);
+INSERT INTO offer (id, location, star_rating, dates, nights, description, price, travel_time, travel_stops) VALUES
+(1, 'Paris - France', '★★★★', '5th - 15th October 2024', 10, 'Experience the romance and charm of Paris. Visit iconic landmarks like the Eiffel Tower and the Louvre, and indulge in exquisite French cuisine and luxury shopping.', 3500, 80, 0),
+(2, 'Sydney - Australia', '★★★★★', '10th - 20th November 2024', 10, 'Explore the vibrant city of Sydney, from the iconic Opera House to the stunning beaches of Bondi. Enjoy world-class dining, shopping, and cultural experiences.', 4500, 1350, 1),
+(3, 'New York - USA', '★★★★', '20th - 30th December 2024', 10, 'Discover the excitement of New York City, from Broadway shows to Central Park. Experience the city that never sleeps with endless entertainment, dining, and shopping options.', 4000, 480, 0),
+(4, 'Rome - Italy', '★★★★', '5th - 15th January 2025', 10, 'Immerse yourself in the history and culture of Rome. Visit ancient landmarks like the Colosseum and the Vatican, and enjoy authentic Italian cuisine and hospitality.', 3200, 150, 0),
+(5, 'Santorini - Greece', '★★★★★', '1st - 10th February 2025', 10, 'Relax in the stunning island of Santorini with its breathtaking sunsets and beautiful beaches. Enjoy luxurious accommodations and the best of Greek cuisine and culture.', 3700, 235, 0),
+(6, 'Dubai - UAE', '★★★★★', '10th - 20th May 2025', 10, 'Discover the opulence and modernity of Dubai. From the Burj Khalifa to luxury shopping malls and desert safaris, experience the best of this dynamic city.', 5000, 410, 0),
+(7, 'Phuket - Thailand', '★★★★', '5th - 15th June 2025', 10, 'Relax in the tropical paradise of Phuket. Enjoy pristine beaches, vibrant nightlife, and delicious Thai cuisine in this beautiful island destination.', 2800, 785, 1),
+(8, 'Maldives', '★★★★★', '2nd - 12th August 2024', 10, 'This incredible 5 star once in a lifetime experience is not to be missed! Relax in luxury with your very own private pool, or experience all the islands have to offer from scuba diving to watching giant sea turtles hatch on the beautiful unspoilt beaches. Perfect for honeymoons!', 4000, 630, 1),
+(9, 'Tokyo - Japan', '★★★', '1st - 14th September 2024', 14, 'Experience the pinnacle of luxury in Tokyo, where cutting-edge innovation meets timeless tradition. Indulge in world-class dining, opulent accommodations, and exclusive shopping experiences, all set against the backdrop of the citys dazzling skyline and serene gardens.', 3000, 705, 0),
+(10, 'Monaco', '★★★★', '15th - 18th September 2024', 4, 'Discover Monaco, renowned for its stunning cultural landmarks, luxurious casinos, and breathtaking vistas of the iconic French Riviera. Steeped in history, this elegant city gracefully combines timeless charm with modern sophistication, all set to the faint hum of race cars.', 500, 115, 0);
+
 
 -- Conversion command to ensure star_rating is correctly encoded - Star ratings are not adding to Database correctly as emojis
 UPDATE offer

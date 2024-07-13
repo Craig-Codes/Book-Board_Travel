@@ -42,6 +42,7 @@ if (empty($latestOffers)) {
                     </h4>
                     <h5 class="star-rating"><?php echo ($offer['star_rating']) ?></h5>
                     <h6 class="travel-dates"><?php echo ($offer['dates']) ?></h6>
+                    <h6 class="travel-dates"><?php echo ($offer['nights']) . ' nights' ?></h6>
                     <p class="travel-description"><?php echo ($offer['description']) ?></p>
                     <!-- The number format is a built in php method to make numeriacal values more readible, adding commas -->
                     <p class="offer-price">£<?php echo number_format($offer['price']) ?></p>
@@ -49,6 +50,8 @@ if (empty($latestOffers)) {
             <?php } ?>
         </div>
     </article>
+    <article> <?php include '../partials/search.php'; ?></article>
+</main>
 </main>
 
 <script src="../js/home.js"></script>

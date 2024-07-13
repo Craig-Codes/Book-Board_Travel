@@ -28,6 +28,7 @@ include '../partials/navbar.php';
         <h4 id="offer-heading" class="card-title"><?php echo ($offer->location); ?></h4>
         <h5 class="star-rating"><span><?php echo ($offer->star_rating); ?></span></h5>
         <h5 class="travel-dates">Dates: <?php echo ($offer->dates); ?></h5>
+        <h5 class="travel-dates"><?php echo ($offer->nights) . ' nights' ?></h5>
         <p class="travel-description"><?php echo ($offer->description); ?></p>
         <!-- The number format is a built in php method to make numerical values more readable, adding commas -->
         <p class="offer-price">£<?php echo number_format($offer->price); ?></p>
