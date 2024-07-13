@@ -36,12 +36,30 @@ class Database
     public static function getAllOffers()
     {
         self::connect();
+
+        // Fetch all offers
         $query = "SELECT * FROM offer";
         $statement = self::$pdo->prepare($query);
         $statement->execute();
         $offers = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        // Fetch images for each offer
+        if ($offers) {
+            foreach ($offers as &$offer) {
+                $imageQuery = "SELECT image_path FROM offer_images WHERE offer_id = :offerId LIMIT 1";
+                $imageStatement = self::$pdo->prepare($imageQuery);
+                $imageStatement->bindParam(':offerId', $offer['id'], PDO::PARAM_INT);
+                $imageStatement->execute();
+                $images = $imageStatement->fetchAll(PDO::FETCH_COLUMN);
+
+                // Add images to the offer array
+                $offer['images'] = $images;
+            }
+        }
+
         return $offers;
     }
+
 
 
     public static function getLatestOffers()

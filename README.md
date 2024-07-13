@@ -17,5 +17,5 @@ docker-compose run --rm www vendor/bin/phpunit "Book&Board_extended/tests/" - fo
 Useful for debugging php database call objects
 
 ```php
-php<pre><?php print_r($offer); ?></pre>
+<pre><?php print_r($offer); ?></pre>
 ```
