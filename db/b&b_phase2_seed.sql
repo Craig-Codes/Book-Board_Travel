@@ -43,7 +43,7 @@ CREATE TABLE offer (
     INDEX (price),
     INDEX (travel_time),
     INDEX (travel_stops)
-);
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 -- Create off_images table, linking offers to there multiple image paths on the server
 CREATE TABLE offer_images (
@@ -100,6 +100,10 @@ INSERT INTO offer (id, location, star_rating, dates, description, price, travel_
 (8, 'Maldives', '★★★★★', '2nd - 12th August 2024 (10 Days)', 'This incredible 5 star once in a lifetime experience is not to be missed! Relax in luxury with your very own private pool, or experience all the islands have to offer from scuba diving to watching giant sea turtles hatch on the beautiful unspoilt beaches. Perfect for honeymoons!', 4000, 630, 1),
 (9, 'Tokyo - Japan', '★★★', '1st - 14th September 2024 (14 Days)', 'Experience the pinnacle of luxury in Tokyo, where cutting-edge innovation meets timeless tradition. Indulge in world-class dining, opulent accommodations, and exclusive shopping experiences, all set against the backdrop of the citys dazzling skyline and serene gardens.', 3000, 705, 0),
 (10, 'Monaco', '★★★★', '15th - 18th September 2024 (4 Days)', 'Discover Monaco, renowned for its stunning cultural landmarks, luxurious casinos, and breathtaking vistas of the iconic French Riviera. Steeped in history, this elegant city gracefully combines timeless charm with modern sophistication, all set to the faint hum of race cars.', 500, 115, 0);
+
+-- Conversion command to ensure star_rating is correctly encoded - Star ratings are not adding to Database correctly as emojis
+UPDATE offer
+SET star_rating = CONVERT(CAST(CONVERT(star_rating USING latin1) AS BINARY) USING utf8mb4);
 
 
 INSERT INTO offer_images (offer_id, image_path) VALUES

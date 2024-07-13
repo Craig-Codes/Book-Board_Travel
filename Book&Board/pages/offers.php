@@ -45,6 +45,9 @@ include '../partials/navbar.php';
             <?php } ?>
         </div>
     </section>
+    <div>
+        <?php echo (Database::queryAllOffers()) ?>
+    </div>
 </main>
 
 

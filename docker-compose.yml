@@ -1,47 +1,46 @@
 services:
-  db:
-    image: mysql:latest
-    platform: linux/amd64
-    environment:
+  db: # MySQL database service
+    image: mysql:latest # Use the latest MySQL Docker image
+    platform: linux/amd64 # Specify the platform for compatibility
+    environment: # Environment variables for MySQL configuration
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: lamp_docker
-      MYSQL_USER: lamp_docker
-      MYSQL_PASSWORD: password
-      MYSQL_ALLOW_EMPTY_PASSWORD: true
-    volumes:
+      MYSQL_ROOT_USER: root
+      MYSQL_DATABASE: book_and_board
+      MYSQL_ALLOW_EMPTY_PASSWORD: true # Allow empty password for development
+    volumes: # Mount volumes for persistent data and initialization scripts
       - "./db:/docker-entrypoint-initdb.d"
       - db-data:/var/lib/mysql
-    networks:
+    networks: # Connect to the custom network 'lamp-docker'
       - lamp-docker
 
-  www:
-    depends_on:
+  www: # Apache + PHP service
+    depends_on: # Ensure 'db' service starts before 'www'
       - db
-    build:
-      context: ./apache-docker
-    volumes:
+    build: # Build configuration for the Docker image
+      context: ./apache-docker # Dockerfile context path
+    volumes: # Mount project directory into the container's web server root
       - "./:/var/www/html"
-    ports:
+    ports: # Expose ports for HTTP and HTTPS
       - "80:80"
       - "443:443"
-    networks:
+    networks: # Connect to the custom network 'lamp-docker'
       - lamp-docker
 
-  phpmyadmin:
-    depends_on:
+  phpmyadmin: # phpMyAdmin service
+    depends_on: # Ensure 'db' service starts before 'phpmyadmin'
       - db
-    image: phpmyadmin/phpmyadmin
-    ports:
+    image: phpmyadmin/phpmyadmin # Use phpMyAdmin Docker image
+    ports: # Expose port for phpMyAdmin web interface
       - "8001:80"
-    environment:
-      - PMA_HOST:db
-      - PMA_PORT:3306
-    networks:
+    environment: # Environment variables for phpMyAdmin configuration
+      - PMA_HOST=db
+      - PMA_PORT=3306
+    networks: # Connect to the custom network 'lamp-docker'
       - lamp-docker
 
-networks:
+networks: # Define custom network 'lamp-docker' for services to communicate
   lamp-docker:
     driver: bridge
 
-volumes:
+volumes: # Define volume for MySQL data persistence
   db-data:

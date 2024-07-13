@@ -1,6 +1,18 @@
 <?php
+// Start output buffering - this ensures no hmtl content is sent to the browser until the script checks for id error
+ob_start();
 include '../partials/header.php';
 include '../partials/navbar.php';
+include '../../db/database.php';
+
+$allOffers = Database::getAllOffers(); // Query the database for all offers
+
+// If offers do not load, re-direct to error page
+if (empty($allOffers)) {
+    header('Location: error.php');
+    exit;
+}
+
 ?>
 
 <link rel="stylesheet" href="../css/offers.css">
@@ -24,18 +36,18 @@ include '../partials/navbar.php';
             <?php foreach ($allOffers as $offer) { ?>
                 <div class="offer-card" role="article">
                     <div class="offer-details">
-                        <h4 class="card-title"><?php echo ($offer->location) ?></h4>
-                        <h5 class="star-rating"><?php echo ($offer->starRating) ?></h5>
-                        <h5 class="travel-dates"><?php echo ($offer->dates) ?></h5>
-                        <p class="travel-description"><?php echo ($offer->description) ?></p>
+                        <h4 class="card-title"><?php echo $offer->location; ?></h4>
+                        <h5 class="star-rating"><?php echo $offer->starRating; ?></h5>
+                        <h5 class="travel-dates"><?php echo $offer->dates; ?></h5>
+                        <p class="travel-description"><?php echo $offer->description; ?></p>
                         <!-- The number format is a built-in PHP method to make numerical values more readable, adding commas -->
-                        <p class="offer-price">£<?php echo number_format($offer->price) ?></p>
+                        <p class="offer-price">£<?php echo number_format($offer->price); ?></p>
                     </div>
                     <div class="offer-image">
                         <!-- We only want to show the first image on this page, so index 0 is used -->
                         <img src="<?php echo $offer->images[0]; ?>" alt="<?php echo $offer->location; ?>" />
                         <!-- A form is used to access the offer page, sending the selected id to the server
-                              so that the correct offer can be selected and more details can be displayed -->
+                      so that the correct offer can be selected and more details can be displayed -->
                         <form action="offer.php" method="get">
                             <input type="hidden" name="id" value="<?php echo $offer->id; ?>">
                             <button type="submit">More Information</button>
@@ -43,9 +55,13 @@ include '../partials/navbar.php';
                     </div>
                 </div>
             <?php } ?>
+
         </div>
     </section>
+    <div>
 </main>
 
 
-<?php include '../partials/footer.php'; ?>
+<?php include '../partials/footer.php';
+// End output buffering and flush the output
+ob_end_flush(); ?>
