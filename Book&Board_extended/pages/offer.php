@@ -2,8 +2,6 @@
 // Start output buffering - this ensures no html content is sent to the browser until the script checks for id error
 ob_start();
 
-// offerData.php contains an array of all the offer objects
-include '../data/offerData.php';
 // utils.php contains a function to convert travel time into a human-readable string
 include '../utils/utils.php';
 include '../../db/database.php';

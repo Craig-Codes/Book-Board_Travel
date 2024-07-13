@@ -16,8 +16,6 @@ if (empty($allOffers)) {
 ?>
 
 <link rel="stylesheet" href="../css/offers.css">
-<!-- offerData.php contains an array of all the offer objects -->
-<?php include '../data/offerData.php'; ?>
 <title>B&B Travel - Offers</title>
 </head>
 
