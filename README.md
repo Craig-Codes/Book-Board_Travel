@@ -15,4 +15,7 @@ docker-compose run --rm www vendor/bin/phpunit "Book&Board/tests/" - for phase 1
 docker-compose run --rm www vendor/bin/phpunit "Book&Board_extended/tests/" - for phase 2
 
 Useful for debugging php database call objects
-<pre><?php print_r($offer); ?></pre>
+
+```php
+php<pre><?php print_r($offer); ?></pre>
+```
