@@ -113,4 +113,14 @@ class Database
         return $offer;
     }
 
+    public static function getLocations()
+    {
+        self::connect();
+        $query = "SELECT * FROM location ORDER BY id DESC";
+        $statement = self::$pdo->prepare($query);
+        $statement->execute();
+        $locations = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $locations;
+    }
+
 }

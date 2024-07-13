@@ -1,7 +1,16 @@
 <!-- include partials and branch location data -->
 <?php include '../partials/header.php';
 include '../partials/navbar.php';
-include '../data/locationData.php' ?>
+include '../../db/database.php';
+
+$locations = Database::getLocations(); // Query the database for the location data
+
+// If offers do not load, re-direct to error page
+if (empty($locations)) {
+    header('Location: error.php');
+    exit;
+}
+?>
 
 <link rel="stylesheet" href="../css/contact.css">
 <title>B&B Travel - Contact</title>
@@ -32,25 +41,26 @@ include '../data/locationData.php' ?>
         <h2 id="contact-heading">Our Locations</h2>
         <div id="contact">
             <?php foreach ($locations as $location) { ?>
-                <div class="contact-card" role="region" aria-labelledby="location-<?php echo $location->id; ?>">
-                    <div class="contact-details">
-                        <h4 id="location-<?php echo $location->id; ?>" class="card-title"><?php echo ($location->title) ?>
-                        </h4>
-                        <div class="address">
-                            <h5 class="card-street"><?php echo ($location->street) ?></h5>
-                            <h5 class="card-city"><?php echo ($location->city) ?></h5>
-                            <h5 class="card-county"><?php echo ($location->county) ?></h5>
-                            <h5 class="card-postcode"><?php echo ($location->postcode) ?></h5>
-                        </div>
-                        <p class="card-phone">📞 <?php echo ($location->phone) ?></p>
-                        <p class="card-email">📧 <?php echo ($location->email) ?></p>
-                        <p class="card-opening-hours">Weekday hours: <?php echo ($location->weekHours) ?></p>
-                        <p class="card-opening-weekend">Weekend hours: <?php echo ($location->weekendHours) ?></p>
+            <div class="contact-card" role="region" aria-labelledby="location-<?php echo $location['id']; ?>">
+                <div class="contact-details">
+                    <h4 id="location-<?php echo $location['id']; ?>" class="card-title">
+                        <?php echo ($location['title']) ?>
+                    </h4>
+                    <div class="address">
+                        <h5 class="card-street"><?php echo ($location['street']) ?></h5>
+                        <h5 class="card-city"><?php echo ($location['city']) ?></h5>
+                        <h5 class="card-county"><?php echo ($location['county']) ?></h5>
+                        <h5 class="card-postcode"><?php echo ($location['postcode']) ?></h5>
                     </div>
-                    <div class="contact-image">
-                        <img src=<?php echo $location->image ?> alt="<?php echo $location->title ?>" />
-                    </div>
+                    <p class="card-phone">📞 <?php echo ($location['phone']) ?></p>
+                    <p class="card-email">📧 <?php echo ($location['email']) ?></p>
+                    <p class="card-opening-hours">Weekday hours: <?php echo ($location['week_hours']) ?></p>
+                    <p class="card-opening-weekend">Weekend hours: <?php echo ($location['weekend_hours']) ?></p>
                 </div>
+                <div class="contact-image">
+                    <img src=<?php echo $location['image_path'] ?> alt="<?php echo $location['title'] ?>" />
+                </div>
+            </div>
             <?php } ?>
         </div>
     </section>
