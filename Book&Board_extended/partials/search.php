@@ -37,17 +37,30 @@ if (!empty($_GET)) {
                 aria-required="true">
         </div>
         <div class="search-input">
-            <label for="duration">Duration (nights):</label>
-            <input type="number" id="duration" name="duration" value="<?php echo $form_duration; ?>" step="1" min="3"
-                max="25" aria-required="true">
+            <label for="filters">Duration (nights):</label>
+            <select id="duration" name="duration" aria-required="true">
+                <option value="any" <?php echo ($form_duration === 'any') ? 'selected' : '' ?>>any</option>
+                <option value="4" <?php echo ($form_duration === '4') ? 'selected' : '' ?>>4
+                </option>
+                <option value="7" <?php echo ($form_duration === '7') ? 'selected' : '' ?>>7
+                </option>
+                <option value="10" <?php echo ($form_duration === '10') ? 'selected' : '' ?>>10
+                </option>
+                <option value="12" <?php echo ($form_duration === '12') ? 'selected' : '' ?>>12
+                </option>
+                <option value="14" <?php echo ($form_duration === '14') ? 'selected' : '' ?>>14
+                </option>
+                <option value="21" <?php echo ($form_duration === '21') ? 'selected' : '' ?>>21
+                </option>
+            </select>
         </div>
         <div class="search-input">
             <label for="filters">Filter By:</label>
             <select id="filter" name="filter" aria-required="true">
                 <option value="price" <?php echo ($form_filter === 'price') ? 'selected' : '' ?>>Price</option>
-                <option value="travel-time" <?php echo ($form_filter === 'travel-time') ? 'selected' : '' ?>>Travel Time
+                <option value="travel_time" <?php echo ($form_filter === 'travel_time') ? 'selected' : '' ?>>Travel Time
                 </option>
-                <option value="flight-stops" <?php echo ($form_filter === 'flight-stops') ? 'selected' : '' ?>>Flight
+                <option value="travel_stops" <?php echo ($form_filter === 'travel_stops') ? 'selected' : '' ?>>Flight
                     Stops
                 </option>
             </select>

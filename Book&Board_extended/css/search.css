@@ -40,7 +40,8 @@ input {
   border: 1px solid white;
 }
 
-#filter {
+#filter,
+#duration {
   border-radius: 5px;
   border: 1px solid white;
 }

@@ -8,12 +8,17 @@ function searchQueryStringBuilder($form_destination, $form_duration, $form_filte
     $query = "SELECT * FROM offer WHERE 1=1";
     $params = []; // params array is used to dynamically append the parameters
 
-    if ($form_destination !== null) {
-        $query .= " AND location LIKE ?"; // Like is used for basic pattern matching
-        $params[] = "%" . $form_destination . "%"; // Wildcards for partial match of destination text, allowing match if the text is found in the destination word/s
+    // Use a default wildcard if form_destination is null or an empty string or 'any'
+    if ($form_destination === null || $form_destination === '' || strtolower($form_destination) === 'any') {
+        $query .= " AND location LIKE ?";
+        $params[] = "%";
+    } else {
+        $query .= " AND location LIKE ?";
+        $params[] = "%" . $form_destination . "%";
     }
 
-    if ($form_duration !== null) {
+    // Allow 'any' through  
+    if ($form_duration !== "any") {
         $query .= " AND nights = ?";
         $params[] = $form_duration;
     }

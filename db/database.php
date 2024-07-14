@@ -56,7 +56,6 @@ class Database
                 $offer['images'] = $images;
             }
         }
-
         return $offers;
     }
 
@@ -65,7 +64,17 @@ class Database
     public static function getLatestOffers()
     {
         self::connect();
-        $query = "SELECT * FROM offer ORDER BY id DESC LIMIT 3";
+        //  We want the last 3 inserted offers which have a unique location
+        $query = "SELECT o.* FROM offer o INNER JOIN (SELECT location, MAX(id) as max_id FROM offer GROUP BY location) 
+             latest ON o.location = latest.location AND o.id = latest.max_id ORDER BY o.id DESC LIMIT 3;";
+        # Select all columns from the 'offer' table as 'o'
+# Create an INNER JOIN with a subquery -
+# The subquery selects the maximum id for each unique location from the offer table.
+# The subquery results are grouped by location as 'latest'.
+# Join the tables - ON o.location = latest.location AND o.id = latest.max_id: 
+# Join the original 'offer' table with the subquery results where the 'location' matches and the 'id' is the maximum id for that location.
+# Order the results by id then Limit the results to 3
+
         $statement = self::$pdo->prepare($query);
         $statement->execute();
         $offers = $statement->fetchAll(PDO::FETCH_ASSOC);

@@ -58,7 +58,7 @@ if (!empty($_GET)) {
 
     <section role="region" aria-labelledby="our-offers">
         <div id="best-selling-offers">
-            <!-- If offers do not load, let user know that no offers where found -->
+            <!-- If no offers are found, let user know that no offers where found -->
             <?php if (empty($offers)) {
                 echo ('<h1>Add Not found content here - keep the user informed</h1>');
             } ?>
