@@ -36,22 +36,21 @@ if (empty($latestOffers)) {
         <div id="best-selling-offers">
             <!-- loop through the latestOffers array, pulling out each found offer to create an information card -->
             <?php foreach ($latestOffers as $offer) { ?>
-                <article class="offer-card" aria-labelledby="offer-<?php echo ($offer['id']) ?>-title"
-                    data-id="<?php echo ($offer['id']) ?>">
-                    <h4 id="offer-<?php echo ($offer['id']) ?>-title" class="card-title"><?php echo ($offer['location']) ?>
-                    </h4>
-                    <h5 class="star-rating"><?php echo ($offer['star_rating']) ?></h5>
-                    <h6 class="travel-dates"><?php echo ($offer['dates']) ?></h6>
-                    <h6 class="travel-dates"><?php echo ($offer['nights']) . ' nights' ?></h6>
-                    <p class="travel-description"><?php echo ($offer['description']) ?></p>
-                    <!-- The number format is a built in php method to make numeriacal values more readible, adding commas -->
-                    <p class="offer-price">£<?php echo number_format($offer['price']) ?></p>
-                </article>
+            <article class="offer-card" aria-labelledby="offer-<?php echo ($offer['id']) ?>-title"
+                data-id="<?php echo ($offer['id']) ?>">
+                <h4 id="offer-<?php echo ($offer['id']) ?>-title" class="card-title"><?php echo ($offer['location']) ?>
+                </h4>
+                <h5 class="star-rating"><?php echo ($offer['star_rating']) ?></h5>
+                <h6 class="travel-dates"><?php echo ($offer['dates']) ?></h6>
+                <h6 class="travel-dates"><?php echo ($offer['nights']) . ' nights' ?></h6>
+                <p class="travel-description"><?php echo ($offer['description']) ?></p>
+                <!-- The number format is a built in php method to make numeriacal values more readible, adding commas -->
+                <p class="offer-price">£<?php echo number_format($offer['price']) ?></p>
+            </article>
             <?php } ?>
         </div>
     </article>
-    <article> <?php include '../partials/search.php'; ?></article>
-</main>
+    <?php include '../partials/search.php'; ?>
 </main>
 
 <script src="../js/home.js"></script>

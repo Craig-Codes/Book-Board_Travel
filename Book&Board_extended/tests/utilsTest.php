@@ -26,4 +26,30 @@ class utilsTest extends TestCase
         // Test case 6: Test with negative minutes (should return empty string)
         $this->assertEquals("", convertMinutesToHoursAndMinutes(-30));
     }
+
+    protected function setUp(): void
+    {
+        $_GET = []; // Clear $_GET before each test
+    }
+
+    public function testValidateSearchInputWithValidParameter()
+    {
+        $_GET['destination'] = '<script>alert("XSS")</script>';
+        $result = validateSearchInput('destination');
+        $this->assertEquals('&lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt;', $result);
+    }
+
+    public function testValidateSearchInputWithMissingParameter()
+    {
+        $result = validateSearchInput('nonexistent');
+        $this->assertNull($result);
+    }
+
+    public function testValidateSearchInputWithEmptyParameter()
+    {
+        $_GET['destination'] = '';
+        $result = validateSearchInput('destination');
+        $this->assertEquals('', $result);
+    }
+
 }

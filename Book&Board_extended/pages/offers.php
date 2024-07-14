@@ -4,13 +4,39 @@ ob_start();
 include '../partials/header.php';
 include '../partials/navbar.php';
 include '../../db/database.php';
+include '../utils/utils.php';
+include '../utils/db_helpers.php';
 
-$allOffers = Database::getAllOffers(); // Query the database for all offers
+// Check to see if we have any query parameters 
+if (!empty($_GET)) {
+    // Check for each potential parameter and validate using helper method in utils/utils.php
+    $form_destination = validateSearchInput("destination");
+    $form_duration = validateSearchInput("duration");
+    $form_filter = validateSearchInput("filter");
+    $filter_order = validateSearchInput("order");
 
-// If offers do not load, re-direct to error page
-if (empty($allOffers)) {
-    header('Location: error.php');
-    exit;
+    // Build the SQL query
+    $result = searchQueryStringBuilder($form_destination, $form_duration, $form_filter, $filter_order);
+
+    // Extract the query and parameters
+    $query = $result['query'];
+    $params = $result['params'];
+    try {
+        $offers = Database::searchOffers($query, $params); // Query the database for offers using query parametes
+    } catch (Exception $e) {
+        // On database error redirect
+        header('Location: error.php');
+        exit;
+    }
+} else {
+    // If we have no query parameters, we want to get all of our offers by default
+    // Try / catch block used to gracefully handle database failure
+    try {
+        $offers = Database::getAllOffers(); // Query the database for all offers
+    } catch (Exception $e) {
+        header('Location: error.php');
+        exit;
+    }
 }
 
 ?>
@@ -32,10 +58,15 @@ if (empty($allOffers)) {
 
     <section role="region" aria-labelledby="our-offers">
         <div id="best-selling-offers">
+            <!-- If offers do not load, let user know that no offers where found -->
+            <?php if (empty($offers)) {
+                echo ('<h1>Add Not found content here - keep the user informed</h1>');
+            } ?>
+
             <!-- Search bar is modular, allowing it to be placed into any page -->
             <?php include '../partials/search.php'; ?>
             <!-- loop through the imported allOffers array of offer objects, to create an offer card for each -->
-            <?php foreach ($allOffers as $offer) { ?>
+            <?php foreach ($offers as $offer) { ?>
                 <div class="offer-card" role="article">
                     <div class="offer-details">
                         <h4 class="card-title"><?php echo ($offer['location']); ?></h4>

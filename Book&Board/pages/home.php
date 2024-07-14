@@ -1,7 +1,7 @@
 <?php include '../data/offerData.php';
 
 // we can get the 3 latest offers by getting the last 3 entires from the allOffers array (in offerData.php)
-$latestOffers = array_slice($allOffers, -3);
+$latestOffers = array_slice($offers, -3);
 
 ?>
 <!-- offerData.php includes an array of bestOffers -->
@@ -28,15 +28,15 @@ $latestOffers = array_slice($allOffers, -3);
         <div id="best-selling-offers">
             <!-- loop through the latestOffers array, pulling out each found offer to create an information card -->
             <?php foreach ($latestOffers as $offer) { ?>
-                <article class="offer-card" aria-labelledby="offer-<?php echo ($offer->id) ?>-title"
-                    data-id="<?php echo ($offer->id) ?>">
-                    <h4 id="offer-<?php echo ($offer->id) ?>-title" class="card-title"><?php echo ($offer->location) ?></h4>
-                    <h5 class="star-rating"><?php echo ($offer->starRating) ?></h5>
-                    <h6 class="travel-dates"><?php echo ($offer->dates) ?></h6>
-                    <p class="travel-description"><?php echo ($offer->description) ?></p>
-                    <!-- The number format is a built in php method to make numeriacal values more readible, adding commas -->
-                    <p class="offer-price">£<?php echo number_format($offer->price) ?></p>
-                </article>
+                    <article class="offer-card" aria-labelledby="offer-<?php echo ($offer->id) ?>-title"
+                        data-id="<?php echo ($offer->id) ?>">
+                        <h4 id="offer-<?php echo ($offer->id) ?>-title" class="card-title"><?php echo ($offer->location) ?></h4>
+                        <h5 class="star-rating"><?php echo ($offer->starRating) ?></h5>
+                        <h6 class="travel-dates"><?php echo ($offer->dates) ?></h6>
+                        <p class="travel-description"><?php echo ($offer->description) ?></p>
+                        <!-- The number format is a built in php method to make numeriacal values more readible, adding commas -->
+                        <p class="offer-price">£<?php echo number_format($offer->price) ?></p>
+                    </article>
             <?php } ?>
         </div>
     </article>

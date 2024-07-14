@@ -2,7 +2,7 @@
 // Array of all offer objects, consumed by multiple views allowing content to be dymanically generated
 // this approach allows data to be edited once, in this file, then automatically updated across the application
 
-$allOffers = [
+$offers = [
     (object) [
         'id' => 4,
         'location' => 'Paris - France',

@@ -1,10 +1,10 @@
 .search-container {
   display: flex; /* Use flexbox layout */
   flex-direction: row; /* Horizontal layout */
-  background-color: rgb(53, 140, 192); /* White background color */
+  background-color: rgb(28, 108, 155); /* White background color */
   color: white;
-  gap: 30px; /* Gap between elements inside the card */
-  max-width: 1200px; /* Maximum width */
+  gap: 5px; /* Gap between elements inside the card */
+  max-width: 1000px; /* Maximum width */
   width: 80vw; /* 80% of the viewport width */
   height: 100px; /* Fixed height */
   border-radius: 10px; /* Rounded corners */
@@ -14,19 +14,67 @@
   box-shadow: 0 0 4px rgba(33, 33, 33, 0.4); /* Shadow effect */
 }
 
-#best-selling-offers {
-  margin-top: 20px; /* Top margin */
-  display: flex; /* Use flexbox layout */
-  flex-wrap: wrap; /* Enable wrapping of items */
-  gap: 45px; /* Gap between items */
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
-  width: 100%; /* Full width of the container */
-  max-width: 1000px; /* Maximum width to control layout */
-  height: auto; /* Auto height to accommodate content */
+#order-container {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
 }
 
-form {
+#search-form {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.search-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-width: 0;
+}
+
+input {
+  border-radius: 5px;
+  border: 1px solid white;
+}
+
+#filter {
+  border-radius: 5px;
+  border: 1px solid white;
+}
+
+.search-container input[type="submit"] {
+  background-color: rgb(27, 107, 155);
+  border: 2px solid rgb(203, 230, 240);
+  color: rgb(203, 230, 240);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.25s ease-in-out;
+  font-weight: bold;
+  font-size: 1rem;
+  min-width: 50px;
+}
+
+.search-container input[type="submit"]:hover {
+  background-color: rgba(203, 230, 240, 0.3);
+}
+
+/* Allows buttons to be accessible without a mouse, showing focus on user tab */
+.search-container input[type="submit"] :focus {
+  outline: 2px solid #0056b3; /* Highlight with a solid outline */
+  outline-offset: 2px; /* Offset to make the outline more visible */
+}
+
+@media (max-width: 700px) {
+  .search-container input[type="submit"] {
+    font-size: 0.8rem;
+    padding: 5px;
+  }
+
+  .search-container {
+    font-size: 0.8rem;
+  }
 }

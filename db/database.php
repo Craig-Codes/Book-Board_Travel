@@ -123,4 +123,26 @@ class Database
         return $locations;
     }
 
+    // Search for offers, passing in a generated query string, and list of parameters
+    public static function searchOffers($query, $params = [])
+    {
+        self::connect();
+        $statement = self::$pdo->prepare($query);
+        $statement->execute($params);
+        $offers = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($offers) {
+            foreach ($offers as &$offer) {
+                $imageQuery = "SELECT image_path FROM offer_images WHERE offer_id = :offerId LIMIT 1";
+                $imageStatement = self::$pdo->prepare($imageQuery);
+                $imageStatement->bindParam(':offerId', $offer['id'], PDO::PARAM_INT);
+                $imageStatement->execute();
+                $images = $imageStatement->fetchAll(PDO::FETCH_COLUMN);
+
+                // Add images to the offer array
+                $offer['images'] = $images;
+            }
+        }
+        return $offers;
+    }
 }

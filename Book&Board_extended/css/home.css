@@ -34,12 +34,18 @@ footer {
 
 #introduction-text h1 {
   margin-top: 0; /* No top margin */
+  margin-bottom: 10px;
   font-weight: bold; /* Bold text */
-  font-size: 3rem; /* Large font size */
+  font-size: 2rem; /* Large font size */
+}
+
+#introduction-text h2,
+h3 {
+  margin-top: 0; /* No top margin */
+  margin-bottom: 10px;
 }
 
 #best-selling-offers {
-  margin-top: 20px; /* Top margin */
   display: flex; /* Flexbox layout */
   flex-wrap: wrap; /* Enable wrapping so that offer cards are responsive */
   gap: 45px; /* Gap between items */
@@ -48,6 +54,8 @@ footer {
   width: 100%; /* Full width */
   max-width: 1200px; /* Maximum width */
   height: auto; /* Automatic height based on content */
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .offer-card {
@@ -58,7 +66,7 @@ footer {
     0.85
   ); /* Semi-transparent background color so that the background image is still the main focus */
   width: 300px; /* Fixed width */
-  height: 360px; /* Fixed height */
+  height: 375px; /* Fixed height */
   border-radius: 10px; /* Rounded corners */
   transition: border 0.5s; /* Transition for border effect */
   padding: 15px; /* Padding inside the card */
@@ -80,7 +88,7 @@ h6 {
 }
 
 .offer-card:hover {
-  border-color: rgb(53, 140, 192); /* Change border color on hover */
+  border-color: rgb(28, 108, 155); /* Change border color on hover */
   box-shadow: none; /* Remove shadow effect on hover */
   background-color: rgba(
     180,
@@ -140,12 +148,12 @@ h6 {
 
 @media (max-width: 768px) {
   .offer-card {
-    height: 300px; /* Reduced height for small screens */
+    height: 325px; /* Reduced height for small screens */
   }
 }
 
 .header {
-  background-color: rgb(53, 140, 192); /* Background color */
+  background-color: rgb(28, 108, 155); /* Background color */
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1); /* Shadow effect */
   position: fixed; /* Fixed position */
   width: 100%; /* Full width */
@@ -291,7 +299,7 @@ h6 {
 }
 
 .header.scrolled {
-  background-color: rgb(53, 140, 192); /* Background color on scroll */
+  background-color: rgb(28, 108, 155); /* Background color on scroll */
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1); /* Shadow on scroll */
 }
 

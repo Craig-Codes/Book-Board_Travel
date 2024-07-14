@@ -82,7 +82,7 @@ h6 {
   width: 400px; /* Fixed width */
   height: 300px; /* Fixed height */
   border-radius: 10px; /* Rounded corners */
-  border: 3px solid rgb(53, 140, 192);
+  border: 3px solid rgb(28, 108, 155);
 }
 
 /* Media query for larger screens */

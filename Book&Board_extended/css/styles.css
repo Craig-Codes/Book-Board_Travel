@@ -35,7 +35,7 @@ main {
   justify-content: space-evenly; /* Space out content evenly */
   text-align: center; /* Center text */
   padding: 20px; /* Padding around content */
-  margin-top: 80px; /* Top margin */
+  margin-top: 60px; /* Top margin */
 }
 
 /* Styles for the footer element */
@@ -49,7 +49,7 @@ footer {
   font-size: 1rem; /* Font size */
   text-shadow: -1px 0 rgb(0, 33, 71), 0 1px rgb(0, 33, 71), 1px 0 rgb(0, 33, 71),
     0 -1px rgb(0, 33, 71); /* Text shadow */
-  background-color: rgb(53, 140, 192); /* Background color */
+  background-color: rgb(28, 108, 155); /* Background color */
 }
 
 /* Styles for the h1 element */
@@ -68,7 +68,7 @@ h6 {
 
 /* Navbar styling used across all pages */
 .header {
-  background-color: rgb(53, 140, 192); /* Background color */
+  background-color: rgb(28, 108, 155); /* Background color */
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.4); /* Box shadow */
   position: fixed; /* Fixed position */
   width: 100%; /* Full width */
@@ -223,7 +223,7 @@ h6 {
 
 /* Header styles when scrolled */
 .header.scrolled {
-  background-color: rgb(53, 140, 192); /* Background color */
+  background-color: rgb(28, 108, 155); /* Background color */
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1); /* Box shadow */
 }
 
@@ -242,12 +242,16 @@ which allows a simple font-size at different breakpoints, to influence all font 
   html {
     font-size: 14px; /* Decrease font size */
   }
+
+  main {
+    margin-top: 80px; /* Top margin */
+  }
 }
 
 /* Media query for medium and large screens */
 @media (min-width: 768px) {
   .header {
-    background-color: rgb(53, 140, 192); /* Background color */
+    background-color: rgb(28, 108, 155); /* Background color */
   }
 
   .header li {

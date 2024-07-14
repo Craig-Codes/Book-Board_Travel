@@ -26,3 +26,13 @@ function convertMinutesToHoursAndMinutes($minutes)
 
     return $result; // return the result as a string
 }
+
+// function validates user input from the search form query parameters
+
+// htmlspecialchars is a build in method used to prevent XSS by covnerting any potential JavaScript or HTML into plaintext
+// ENT_Quotes ensures quotation marks are converted to their correct HTML characters
+// UTF-8 ensures widely recognised languages and alpabets are handled correctly
+function validateSearchInput($key)
+{
+    return isset($_GET[$key]) ? htmlspecialchars($_GET[$key], ENT_QUOTES, 'UTF-8') : null;
+}

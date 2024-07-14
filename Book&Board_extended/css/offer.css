@@ -43,7 +43,7 @@ h6 {
 
 /* Offer price style */
 .offer-price {
-  color: rgb(53, 140, 192); /* Text color */
+  color: rgb(28, 108, 155); /* Text color */
   font-weight: bold; /* Bold font weight */
   letter-spacing: 2px; /* Spacing between letters */
   font-size: 1.2rem; /* Font size */
@@ -93,7 +93,7 @@ h6 {
   width: 600px; /* Set width of the images */
   height: 350px; /* Set height of the images */
   border-radius: 10px; /* Rounded corners */
-  border: 3px solid rgb(53, 140, 192); /* Border color */
+  border: 3px solid rgb(28, 108, 155); /* Border color */
 }
 
 /* Hide the slides by default */
@@ -149,7 +149,7 @@ h6 {
 /* Active dot and dot on hover */
 .active,
 .dot:hover {
-  background-color: rgb(53, 140, 192); /* Darker background color */
+  background-color: rgb(28, 108, 155); /* Darker background color */
 }
 
 /* Fading animation for the slides */
