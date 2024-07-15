@@ -5,96 +5,95 @@ require_once __DIR__ . '/../utils/db_helpers.php'; // Use __DIR__ to get the cur
 
 class db_helpersTest extends TestCase
 {
-    public function testWithAllParameters()
+    /**
+     * Test case for no filters applied (default case).
+     * It should use a wildcard for the location.
+     */
+    public function testNoFilters()
     {
-        $form_destination = "New";
-        $form_duration = "5";
-        $form_filter = "price";
-        $filter_order = "nights DESC";
+        $result = searchQueryStringBuilder(null, "any", null, null);
+        $expectedQuery = "SELECT * FROM offer WHERE 1=1 AND location LIKE ?";
+        $expectedParams = ["%"];
 
-        $result = searchQueryStringBuilder($form_destination, $form_duration, $form_filter, $filter_order);
-
-        $this->assertEquals(
-            "SELECT * FROM offer WHERE 1=1 AND location LIKE ? AND nights = ? AND filter = ? ORDER BY nights DESC",
-            $result['query']
-        );
-        $this->assertEquals(["%New%", "5", "price"], $result['params']);
+        $this->assertEquals($expectedQuery, $result['query']);
+        $this->assertEquals($expectedParams, $result['params']);
     }
 
-    public function testWithDestinationOnly()
+    /**
+     * Test case for applying a destination filter.
+     * It should include the destination in the query.
+     */
+    public function testDestinationFilter()
     {
-        $form_destination = "York";
-        $form_duration = null;
-        $form_filter = null;
-        $filter_order = null;
+        $result = searchQueryStringBuilder("Paris", "any", null, null);
+        $expectedQuery = "SELECT * FROM offer WHERE 1=1 AND location LIKE ?";
+        $expectedParams = ["%Paris%"];
 
-        $result = searchQueryStringBuilder($form_destination, $form_duration, $form_filter, $filter_order);
-
-        $this->assertEquals(
-            "SELECT * FROM offer WHERE 1=1 AND location LIKE ?",
-            $result['query']
-        );
-        $this->assertEquals(["%York%"], $result['params']);
+        $this->assertEquals($expectedQuery, $result['query']);
+        $this->assertEquals($expectedParams, $result['params']);
     }
 
-    public function testWithNoParameters()
+    /**
+     * Test case for applying a duration filter.
+     * It should include the duration in the query.
+     */
+    public function testDurationFilter()
     {
-        $form_destination = null;
-        $form_duration = null;
-        $form_filter = null;
-        $filter_order = null;
+        $result = searchQueryStringBuilder(null, "7", null, null);
+        $expectedQuery = "SELECT * FROM offer WHERE 1=1 AND location LIKE ? AND nights = ?";
+        $expectedParams = ["%", "7"];
 
-        $result = searchQueryStringBuilder($form_destination, $form_duration, $form_filter, $filter_order);
-
-        $this->assertEquals("SELECT * FROM offer WHERE 1=1", $result['query']);
-        $this->assertEmpty($result['params']);
+        $this->assertEquals($expectedQuery, $result['query']);
+        $this->assertEquals($expectedParams, $result['params']);
     }
 
-    public function testWithDurationOnly()
+    /**
+     * Test case for applying both destination and duration filters.
+     * It should include both in the query.
+     */
+    public function testDestinationAndDurationFilters()
     {
-        $form_destination = null;
-        $form_duration = "10";
-        $form_filter = null;
-        $filter_order = null;
+        $result = searchQueryStringBuilder("Paris", "7", null, null);
+        $expectedQuery = "SELECT * FROM offer WHERE 1=1 AND location LIKE ? AND nights = ?";
+        $expectedParams = ["%Paris%", "7"];
 
-        $result = searchQueryStringBuilder($form_destination, $form_duration, $form_filter, $filter_order);
-
-        $this->assertEquals(
-            "SELECT * FROM offer WHERE 1=1 AND nights = ?",
-            $result['query']
-        );
-        $this->assertEquals(["10"], $result['params']);
+        $this->assertEquals($expectedQuery, $result['query']);
+        $this->assertEquals($expectedParams, $result['params']);
     }
 
-    public function testWithFilterOnly()
+    /**
+     * Test case for applying valid filter and sort direction.
+     * It should include both the filter and sort direction in the query.
+     */
+    public function testValidFilterAndSortDirection()
     {
-        $form_destination = null;
-        $form_duration = null;
-        $form_filter = "price";
-        $filter_order = null;
+        $result = searchQueryStringBuilder("Paris", "7", "price", "ASC");
+        $expectedQuery = "SELECT * FROM offer WHERE 1=1 AND location LIKE ? AND nights = ? ORDER BY price ASC";
+        $expectedParams = ["%Paris%", "7"];
 
-        $result = searchQueryStringBuilder($form_destination, $form_duration, $form_filter, $filter_order);
-
-        $this->assertEquals(
-            "SELECT * FROM offer WHERE 1=1 AND filter = ?",
-            $result['query']
-        );
-        $this->assertEquals(["price"], $result['params']);
+        $this->assertEquals($expectedQuery, $result['query']);
+        $this->assertEquals($expectedParams, $result['params']);
     }
 
-    public function testWithOrdering()
+    /**
+     * Test case for invalid filter column.
+     * It should throw an exception with the message 'Invalid filter column'.
+     */
+    public function testInvalidFilterColumn()
     {
-        $form_destination = null;
-        $form_duration = null;
-        $form_filter = null;
-        $filter_order = "travel_time ASC";
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Invalid filter column');
+        searchQueryStringBuilder("Paris", "7", "invalid_filter", "ASC");
+    }
 
-        $result = searchQueryStringBuilder($form_destination, $form_duration, $form_filter, $filter_order);
-
-        $this->assertEquals(
-            "SELECT * FROM offer WHERE 1=1 ORDER BY travel_time ASC",
-            $result['query']
-        );
-        $this->assertEmpty($result['params']);
+    /**
+     * Test case for invalid sort direction.
+     * It should throw an exception with the message 'Invalid sort direction'.
+     */
+    public function testInvalidSortDirection()
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Invalid sort direction');
+        searchQueryStringBuilder("Paris", "7", "price", "INVALID");
     }
 }

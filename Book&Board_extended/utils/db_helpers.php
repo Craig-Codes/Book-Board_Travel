@@ -25,11 +25,15 @@ function searchQueryStringBuilder($form_destination, $form_duration, $form_filte
 
     // Ensure the filter column and sort direction are valid to prevent SQL injection
     $allowed_filters = ['travel_time', 'travel_stops', 'price']; // Define your allowed columns
-    $allowed_orders = ['ASC', 'DESC'];
+    $allowed_orders = ['ASC', 'DESC']; // List of allowed values
 
-    if ($form_filter !== null && in_array($form_filter, $allowed_filters)) {
+    if ($form_filter !== null) { // If input is not null 
+        if (!in_array($form_filter, $allowed_filters)) { // If the input is not in the array (ASC or DESC), throw error
+            throw new Exception('Invalid filter column');
+        }
+
         $sort_direction = strtoupper($filter_order); // Convert sort direction to uppercase
-        if (in_array($sort_direction, $allowed_orders)) {
+        if (in_array($sort_direction, $allowed_orders)) { // If the input is in the list, it is valid
             $query .= " ORDER BY " . $form_filter . " " . $sort_direction;
         } else {
             throw new Exception('Invalid sort direction');
@@ -37,4 +41,5 @@ function searchQueryStringBuilder($form_destination, $form_duration, $form_filte
     }
 
     return ['query' => $query, 'params' => $params];
+    // return both the query string and the parameters - allows the database to use prepared statements for security
 }

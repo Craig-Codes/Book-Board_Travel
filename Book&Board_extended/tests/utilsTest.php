@@ -51,5 +51,50 @@ class utilsTest extends TestCase
         $result = validateSearchInput('destination');
         $this->assertEquals('', $result);
     }
+    /**
+     * Test valid input that is within the length limit.
+     */
+    public function testValidInput()
+    {
+        $_GET['test_key'] = 'valid_input';
+        $result = validateSearchInput('test_key');
+        $expected = htmlspecialchars('valid_input', ENT_QUOTES, 'UTF-8');
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Test input that exceeds the length limit of 100 characters.
+     */
+    public function testInputTooLong()
+    {
+        $_GET['test_key'] = str_repeat('a', 101);
+        $result = validateSearchInput('test_key');
+
+        $this->assertNull($result);
+    }
+
+    /**
+     * Test the absence of the input key.
+     */
+    public function testInputNotSet()
+    {
+        unset($_GET['test_key']);
+        $result = validateSearchInput('test_key');
+
+        $this->assertNull($result);
+    }
+
+    /**
+     * Test input that contains special characters.
+     */
+    public function testInputWithSpecialCharacters()
+    {
+        $_GET['test_key'] = '<script>alert("test")</script>';
+        $result = validateSearchInput('test_key');
+        $expected = htmlspecialchars('<script>alert("test")</script>', ENT_QUOTES, 'UTF-8');
+
+        $this->assertEquals($expected, $result);
+    }
 
 }

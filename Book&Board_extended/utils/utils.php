@@ -34,5 +34,12 @@ function convertMinutesToHoursAndMinutes($minutes)
 // UTF-8 ensures widely recognised languages and alpabets are handled correctly
 function validateSearchInput($key)
 {
-    return isset($_GET[$key]) ? htmlspecialchars($_GET[$key], ENT_QUOTES, 'UTF-8') : null;
+    if (isset($_GET[$key]) && strlen($_GET[$key]) <= 100) { // 100 is varchar limit for location in the database
+        $sanitized_value = htmlspecialchars($_GET[$key], ENT_QUOTES, 'UTF-8');
+    } else {
+        // Handle the error case where the variable is too long or not set
+        $sanitized_value = null; // null is default error value
+    }
+
+    return $sanitized_value;
 }
