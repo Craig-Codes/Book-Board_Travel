@@ -58,13 +58,16 @@ if (!empty($_GET)) {
 
     <section role="region" aria-labelledby="our-offers">
         <div id="best-selling-offers">
-            <!-- If no offers are found, let user know that no offers where found -->
-            <?php if (empty($offers)) {
-                echo ('<h1>Add Not found content here - keep the user informed</h1>');
-            } ?>
-
             <!-- Search bar is modular, allowing it to be placed into any page -->
             <?php include '../partials/search.php'; ?>
+
+            <!-- If no offers are found, let user know that no offers where found -->
+            <?php if (empty($offers)) {
+                echo ('
+                <div class="offer-error" role="article">
+                <h4>Sorry, no offers found matching your search criteria, please try another search.
+                </h4>');
+            } ?>
             <!-- loop through the imported allOffers array of offer objects, to create an offer card for each -->
             <?php foreach ($offers as $offer) { ?>
                 <div class="offer-card" role="article">

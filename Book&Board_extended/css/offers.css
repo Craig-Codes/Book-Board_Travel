@@ -37,6 +37,25 @@
   box-shadow: 0 0 4px rgba(33, 33, 33, 0.4); /* Shadow effect */
 }
 
+/* Styles for each offer error card */
+.offer-error {
+  display: flex; /* Use flexbox layout */
+  flex-direction: row; /* Horizontal layout */
+  background-color: rgb(252, 159, 159); /* White background color */
+  color: darkred;
+  gap: 30px; /* Gap between elements inside the card */
+  max-width: 1200px; /* Maximum width */
+  width: 80vw; /* 80% of the viewport width */
+  height: 100px; /* Fixed height */
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; /* Rounded corners */
+  transition: 0.5s; /* Smooth transition effect */
+  padding: 20px; /* Padding inside the card */
+  box-sizing: border-box; /* Include padding in the width */
+  box-shadow: 0 0 4px rgba(33, 33, 33, 0.4); /* Shadow effect */
+}
+
 /* Heading styles inside the offer card */
 .offer-card h4,
 h5,
