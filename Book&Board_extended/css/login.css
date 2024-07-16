@@ -38,12 +38,78 @@
 .tabs {
   display: flex;
   flex-direction: row;
-  gap: 25px;
+  gap: 20px;
   align-items: center;
   justify-content: flex-start;
+}
+
+.tab-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#login-form,
+#register-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+input[type="submit"] {
+  margin-bottom: 20px;
+  background-color: white;
+  border: 2px solid rgb(28, 108, 155);
+  color: rgb(28, 108, 155);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.25s ease-in-out;
+  font-weight: bold;
+  width: 100px;
+  align-self: center;
+}
+
+input[type="submit"]:hover {
+  background-color: rgba(28, 108, 155, 0.3);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  border: 2px solid rgb(28, 108, 155);
+  border-radius: 5px;
+  color: rgb(0, 33, 71);
 }
 
 .active {
   background-color: rgba(28, 108, 155, 0.3);
   border-bottom: 2px solid rgb(28, 108, 155);
+}
+
+/* Allows buttons to be accessible without a mouse, showing focus on user tab */
+input[type="submit"] :focus {
+  outline: 2px solid #0056b3; /* Highlight with a solid outline */
+  outline-offset: 2px; /* Offset to make the outline more visible */
+}
+
+#confirm-password-error {
+  display: block; /* Ensure it's visible */
+  color: red; /* For visibility */
+}
+
+.error {
+  display: flex; /* Use flexbox layout */
+  flex-direction: row; /* Horizontal layout */
+  background-color: rgb(252, 159, 159); /* White background color */
+  color: darkred;
+  height: 50px; /* Fixed height */
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; /* Rounded corners */
+  transition: 0.5s; /* Smooth transition effect */
+  padding: 20px; /* Padding inside the card */
+  box-sizing: border-box; /* Include padding in the width */
+  box-shadow: 0 0 4px rgba(33, 33, 33, 0.4); /* Shadow effect */
 }

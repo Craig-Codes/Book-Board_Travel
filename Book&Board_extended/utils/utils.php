@@ -43,3 +43,15 @@ function validateSearchInput($key)
 
     return $sanitized_value;
 }
+
+function validateLoginInput($key)
+{
+    if (isset($_POST[$key]) && strlen($_POST[$key]) <= 100) { // 100 is varchar limit for location in the database
+        $sanitized_value = htmlspecialchars($_POST[$key], ENT_QUOTES, 'UTF-8');
+    } else {
+        // Handle the error case where the variable is too long or not set
+        $sanitized_value = null; // null is default error value
+    }
+
+    return $sanitized_value;
+}
