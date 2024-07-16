@@ -11,17 +11,17 @@
   padding: 20px; /* Padding inside the card */
 }
 
-input[type="submit"] {
+.tab-links {
   background-color: white;
-  border: 2px solid rgb(95, 182, 191);
-  color: rgb(95, 182, 191);
+  border: none;
+  color: rgb(28, 108, 155);
   cursor: pointer;
   padding: 10px;
-  border-radius: 10px;
   transition: 0.25s ease-in-out;
   font-weight: bold;
   width: 100px;
   align-self: center;
+  font-size: 1rem;
 }
 
 #login-buttons {
@@ -31,18 +31,19 @@ input[type="submit"] {
   justify-content: center;
 }
 
-input[type="submit"]:hover {
-  background-color: rgba(95, 182, 191, 0.3);
+.tab-links:hover {
+  background-color: rgba(28, 108, 155, 0.3);
 }
 
-#login-or-register {
+.tabs {
   display: flex;
   flex-direction: row;
   gap: 25px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .active {
-  background-color: blue;
+  background-color: rgba(28, 108, 155, 0.3);
+  border-bottom: 2px solid rgb(28, 108, 155);
 }
