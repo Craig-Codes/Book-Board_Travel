@@ -6,6 +6,12 @@ require_once __DIR__ . '/../utils/utils.php'; // Use __DIR__ to get the current 
 
 class utilsTest extends TestCase
 {
+    // Setup all tests - ensure varaibles are cleared
+    protected function setUp(): void
+    {
+        $_GET = []; // Clear $_GET before each test
+        $_POST = []; // Clear $_POST before each test
+    }
     public function testConvertMinutesToHoursAndMinutes()
     {
         // Test case 1: Test with 120 minutes (2 hours)
@@ -25,11 +31,6 @@ class utilsTest extends TestCase
 
         // Test case 6: Test with negative minutes (should return empty string)
         $this->assertEquals("", convertMinutesToHoursAndMinutes(-30));
-    }
-
-    protected function setUp(): void
-    {
-        $_GET = []; // Clear $_GET before each test
     }
 
     public function testValidateSearchInputWithValidParameter()
@@ -95,6 +96,55 @@ class utilsTest extends TestCase
         $expected = htmlspecialchars('<script>alert("test")</script>', ENT_QUOTES, 'UTF-8');
 
         $this->assertEquals($expected, $result);
+    }
+
+    // Test case: the key exists in the $_POST array and the value is within the length limit
+    public function testKeyExistsAndValueWithinLimit()
+    {
+        // Set a valid username in the $_POST array
+        $_POST['username'] = 'validuser';
+
+        // Call the function and store the result
+        $result = validateLoginInput('username');
+
+        // Assert that the result is the expected sanitized value
+        $this->assertEquals('validuser', $result);
+    }
+
+    // Test case: the key exists in the $_POST array but the value exceeds the length limit
+    public function testKeyExistsAndValueExceedsLimit()
+    {
+        // Set a username that exceeds the 100 character limit
+        $_POST['username'] = str_repeat('a', 101);
+
+        // Call the function and store the result
+        $result = validateLoginInput('username');
+
+        // Assert that the result is null due to the value exceeding the limit
+        $this->assertNull($result);
+    }
+
+    // Test case: the key does not exist in the $_POST array
+    public function testKeyDoesNotExist()
+    {
+        // Call the function with a key that does not exist in the $_POST array
+        $result = validateLoginInput('nonexistentkey');
+
+        // Assert that the result is null due to the key not existing
+        $this->assertNull($result);
+    }
+
+    // Test case: the value contains special characters to ensure it is properly sanitized
+    public function testValueContainsSpecialCharacters()
+    {
+        // Set a username with special characters in the $_POST array
+        $_POST['username'] = '<script>alert("xss")</script>';
+
+        // Call the function and store the result
+        $result = validateLoginInput('username');
+
+        // Assert that the result is the expected sanitized value
+        $this->assertEquals('&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;', $result);
     }
 
 }
