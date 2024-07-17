@@ -46,7 +46,7 @@ function validateSearchInput($key)
 
 function validateLoginInput($key)
 {
-    if (isset($_POST[$key]) && strlen($_POST[$key]) <= 100) { // 100 is varchar limit for location in the database
+    if (isset($_POST[$key]) && strlen($_POST[$key]) <= 100 && strlen($_POST[$key]) >= 5) { // 100 is varchar limit for location in the database
         $sanitized_value = htmlspecialchars($_POST[$key], ENT_QUOTES, 'UTF-8');
     } else {
         // Handle the error case where the variable is too long or not set

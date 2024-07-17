@@ -7,20 +7,26 @@ include '../../db/database.php';
 include '../utils/utils.php';
 include '../utils/db_helpers.php';
 
+// error state flags, allowing the correct output to be given to the user on a login or register failure
 $login = false;
 $register = false;
-$loginError = false;
-$registerError = false;
+// Store the error message to be output to the user
+$loginError;
+$registerError;
+
 // Check to see if we have any POST request data
 if (!empty($_POST)) {
     // Check for each potential parameter and validate using helper method in utils/utils.php
     // Validate login inputs
     if (!empty($_POST['username']) && !empty($_POST['password'])) {
         $username = validateLoginInput("username");
-        $password = validateLoginInput("password");
+        $inputPassword = validateLoginInput("password");
         // Ensure none of the unputs are null values
-        if ($username !== null && $password !== null) {
+        if ($username !== null && $inputPassword !== null) {
             $login = true;
+            $register = false;
+        } else {
+            $loginError = "Ensure username and password are no longer than 100 characters, and no shorter than 5 characters";
         }
     }
     // Validate register inputs
@@ -32,26 +38,72 @@ if (!empty($_POST)) {
         && $_POST['confirm-password'] === $_POST['register-password']
     ) {
         $username = validateLoginInput("register-username");
-        $password = validateLoginInput("register-password");
+        $inputPassword = validateLoginInput("register-password");
         $confirmPassword = validateLoginInput("confirm-password");
-        $email = validateLoginInput("email");
-        // Ensure none of the unputs are null values
-        if ($username !== null && $password !== null && $confirmPassword !== null && $email !== null) {
-            $register = true;
+
+        //  DOOOOO seperate validation for email!!!
+
+        $email = validateLoginInput("email"); // DO A SEPERATE VALIDATION HERE!!!
+
+
+
+
+        // Ensure none of the inputs are null values
+        if ($username !== null && $inputPassword !== null && $confirmPassword !== null && $email !== null) {
+            if ($inputPassword !== $confirmPassword) {
+                $registerError = "Passwords do not match";
+            } else {
+                $register = true;
+                $login = false;
+            }
+        } else {
+            $registerError = "Ensure username and password are no longer than 100 characters, and no shorter than 5 characters";
         }
     }
 }
 
-// IF login -> DB
-if ($login) {
-    // try / catch - loginError = true 
-    // Login route -dbhelpers
-    // Start a session
+if ($login) { // If login data is verified and complete, attempt to log user in
+    try {
+        // Try and get the user
+        $hashedPassword = Database::getUserPassword($_POST['username']);
+        if ($hashedPassword === null) { // If we get null, a user was not found
+            $loginError = "No user was found"; // No user found
+        } else {
+            $inputPassword = $_POST["password"];
+            // Check if entered password matches the hashed and salted password stored in the DB
+            if (password_verify($inputPassword, $hashedPassword)) {
+                // Start Session
+                header('Location: profile.php');
+                exit;
+            } else {
+                $loginError = "Incorrect password";
+            }
+        }
+    } catch (Exception $e) {
+        $loginError = "Unable to retrieve user";
+    }
 }
-if ($register) {
-    // try / catch - registerError = true
-    // Register route -dbhelpers
-    //start a session
+
+if ($register) { // If register data is verified and complete, attempt to register user
+    try {
+        // Check that username doesn't already exist
+        $userAlreadyExists = Database::checkUser($_POST['register-username']);
+        if ($userAlreadyExists) {
+            $registerError = "User already exists";
+        } else {
+            // Create new user
+            $user = Database::insertUser($_POST['register-username'], $_POST['register-password'], $_POST['email']);
+            if ($user === false) {
+                $registerError = "Unable to create new user";
+            } else {
+                // Start Session
+                header('Location: profile.php');
+                exit;
+            }
+        }
+    } catch (Exception $e) {
+        $registerError = "Unable to create new user";
+    }
 }
 
 ?>
@@ -63,19 +115,22 @@ if ($register) {
     <section id="login-section">
         <!-- Flash any error to the user to keep them informed -->
         <!-- If we have a login error -->
-        <?php if ($loginError) {
-            echo ('
-                <div class="error" role="article">
-                <h4>Unable to login, please try again.
-                </h4></div>');
+        <?php if (isset($loginError)) {
+            echo ("
+            <div class='error' role='article'>
+                <h4>$loginError</h4>
+            </div>
+        ");
         } ?>
         <!-- If we have a register error -->
-        <?php if ($registerError) {
-            echo ('
-                <div class="error" role="article">
-                <h4>Unable to register a new user, please try again.
-                </h4></div>');
+        <?php if (isset($registerError)) {
+            echo ("
+        <div class='error' role='article'>
+            <h4>$registerError</h4>
+        </div>
+    ");
         } ?>
+
         <div class="tabs">
             <!-- Tabs control what content is displayed to the user, either the login form or the register form -->
             <button id="login-tab" class="tab-links" onclick="openTab(event, 'login-content')">Login</button>
@@ -89,14 +144,14 @@ if ($register) {
                 <div class="search-input">
                     <label for="username">Username:</label>
                     <!-- Basic frontend validation using maxLength to limit username length -->
-                    <input type="text" id="username" name="username" aria-required="true" maxlength="100"
+                    <input type="text" id="username" name="username" aria-required="true" maxlength="100" minLength="5"
                         required="true">
                 </div>
                 <div id="login-username-error"></div>
                 <div class="search-input">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" aria-required="true" maxlength="100"
-                        required="true">
+                        minLength="5" required="true">
                 </div>
                 <div id="login-password-error"></div>
 
@@ -109,19 +164,19 @@ if ($register) {
                 <div class="search-input">
                     <label for="username">Username:</label>
                     <input type="text" id="register-username" name="register-username" aria-required="true"
-                        maxlength="100" required="true">
+                        maxlength="100" required="true" minLength="5">
                 </div>
                 <div id="register-username-error"></div>
                 <div class="search-input">
                     <label for="password">Password:</label>
                     <input type="password" id="register-password" name="register-password" aria-required="true"
-                        maxlength="100" required="true">
+                        maxlength="100" required="true" minLength="5">
                 </div>
                 <div id="password-error"></div>
                 <div class="search-input">
                     <label for="confirm-password">Confirm Password:</label>
                     <input type="password" id="confirm-password" name="confirm-password" aria-required="true"
-                        maxlength="100" required="true">
+                        maxlength="100" required="true" minLength="5">
                 </div>
                 <div id="confirm-password-error"></div>
                 <div class="search-input email">

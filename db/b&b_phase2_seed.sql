@@ -4,14 +4,12 @@
 -- We want to start the transaction of creating the tables and adding the seed data to database in docker container
 START TRANSACTION; 
 
--- Create the user table, storing hashed passwords and salt rather than plaintext
+-- Create the user table, storing hashed and salted passwords
 CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    hashed_password VARCHAR(255) NOT NULL,
-    salt VARCHAR(255) NOT NULL
+    username VARCHAR(255) NOT NULL,
+    hashed_password VARCHAR(255) NOT NULL
 );
 
 -- Create the location table
@@ -301,5 +299,3 @@ INSERT INTO offer_facilities (offer_id, facility) VALUES
 (28, 'High-end Hotels'), (28, 'Gourmet Restaurants'), (28, 'Spa and Wellness Centers'),
 (29, 'High-end Hotels'), (29, 'Gourmet Restaurants'), (29, 'Spa and Wellness Centers'),
 (30, 'High-end Hotels'), (30, 'Gourmet Restaurants'), (30, 'Spa and Wellness Centers');
-
-

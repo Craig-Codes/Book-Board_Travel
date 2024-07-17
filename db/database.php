@@ -154,4 +154,63 @@ class Database
         }
         return $offers;
     }
+
+    public static function getUserPassword($username)
+    {
+        self::connect();
+        // Fetch user hashed password based on username
+        $query = "SELECT hashed_password FROM user WHERE username = :username";
+        $statement = self::$pdo->prepare($query);
+        $statement->bindParam(':username', $username, PDO::PARAM_STR);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        // Check if user exists and return the hashed password
+        if ($result) {
+            return $result['hashed_password'];
+        } else {
+            return null; // User not found
+        }
+    }
+
+    public static function checkUser($username)
+    {
+        self::connect();
+        // Fetch user hashed password based on username
+        $query = "SELECT username FROM user WHERE username = :username";
+        $statement = self::$pdo->prepare($query);
+        $statement->bindParam(':username', $username, PDO::PARAM_STR);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            return true; // If a user exists return true
+        } else {
+            return false; // User not found
+        }
+    }
+
+    public static function insertUser($username, $password, $email)
+    {
+        self::connect();
+        // password_hash is a built in PHP function which securely hashes and salts a password, ensuring it is unique
+        // The salt is included as part of the hash, with the algorithm being one way unless the salt is known
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        // Prepare the SQL statement
+        $query = "INSERT INTO user (username, hashed_password, email) VALUES (:username, :hashed_password, :email)";
+        $statement = self::$pdo->prepare($query);
+
+        // Bind parameters
+        $statement->bindParam(':username', $username, PDO::PARAM_STR);
+        $statement->bindParam(':hashed_password', $hashedPassword, PDO::PARAM_STR);
+        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+
+        // Execute the statement
+        if ($statement->execute()) {
+            return true; // User inserted successfully
+        } else {
+            return false; // Insertion failed
+        }
+    }
 }
