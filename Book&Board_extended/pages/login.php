@@ -124,7 +124,7 @@ if ($register) {
                         maxlength="100" required="true">
                 </div>
                 <div id="confirm-password-error"></div>
-                <div class="email">
+                <div class="search-input email">
                     <!-- Basic frontend validation using email type to ensure input is a valid email address -->
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" aria-required="true" required="true">

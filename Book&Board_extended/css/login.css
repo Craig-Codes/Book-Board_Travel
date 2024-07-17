@@ -113,3 +113,13 @@ input[type="submit"] :focus {
   box-sizing: border-box; /* Include padding in the width */
   box-shadow: 0 0 4px rgba(33, 33, 33, 0.4); /* Shadow effect */
 }
+
+#register-content {
+  text-align: left;
+}
+
+.search-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
