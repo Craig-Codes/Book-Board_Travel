@@ -25,18 +25,62 @@ document.getElementById("register-content").style.display = "none";
 // Start the login tab highlighted so users know where they are
 document.getElementById("login-tab").classList.add("active");
 
-// On submit register, check that passwords match
-const handleRegisterSubmit = (event) => {
-  event.preventDefault(); // Stop the form from submitting until validated
-  // Check passwords match,
-  const password = document.getElementById("register-password").value;
-  const confirmPassword = document.getElementById("confirm-password").value;
-  if (password !== confirmPassword) {
-    const errorBox = document.getElementById("confirm-password-error");
-    errorBox.innerText = "error: passwords do not match";
-  } else {
-    const form = document.getElementById("register-form");
-    form.submit();
-  }
-  // submit form
+// function does basic front end email validation
+// More advanced checking is conducted using php server side
+const validateEmail = (email) => {
+  // Define the regular expression for validating an email
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return regex.test(email); // test against the regex
 };
+
+document.getElementById("register-form").addEventListener("submit", (event) => {
+  let isValid = true; // Boolean controls if error is displayed
+
+  const usernameInput = document.getElementById("register-username"); // Get the username input
+  const usernameError = document.getElementById("register-username-error"); // Get the username error message
+  if (usernameInput.value.length < 5) {
+    // Check that user input has a length greater than 5
+    usernameError.style.display = "block"; // If error, show pass error message to user
+    isValid = false;
+  } else {
+    usernameError.style.display = "none";
+  }
+
+  const passwordInput = document.getElementById("register-password"); // Get the password user input
+  const passwordError = document.getElementById("password-error"); // Get the password error message
+  if (passwordInput.value.length < 5) {
+    // Check that user input has a length greater than 5
+    passwordError.style.display = "block"; // If error, show pass error message to user
+    isValid = false;
+  } else {
+    passwordError.style.display = "none";
+  }
+
+  const confirmPasswordInput = document.getElementById("confirm-password");
+  const confirmPasswordError = document.getElementById(
+    "confirm-password-error"
+  );
+  if (confirmPasswordInput.value !== passwordInput.value) {
+    // Check to see if the password inputs match
+    confirmPasswordError.style.display = "block"; // If they do not match, display error to user
+    isValid = false;
+  } else {
+    confirmPasswordError.style.display = "none";
+  }
+
+  const emailInput = document.getElementById("email");
+  const emailError = document.getElementById("email-error");
+  if (!validateEmail(emailInput.value)) {
+    // check that the email is a valis email address
+    emailError.style.display = "block";
+    isValid = false;
+  } else {
+    emailError.style.display = "none";
+  }
+
+  if (!isValid) {
+    event.preventDefault(); // Prevent form submission if validation fails
+  } else {
+    this.submit(); // Submit validated form
+  }
+});

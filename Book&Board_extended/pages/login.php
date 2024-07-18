@@ -40,12 +40,7 @@ if (!empty($_POST)) {
         $username = validateLoginInput("register-username");
         $inputPassword = validateLoginInput("register-password");
         $confirmPassword = validateLoginInput("confirm-password");
-
-        //  DOOOOO seperate validation for email!!!
-
-        $email = validateLoginInput("email"); // DO A SEPERATE VALIDATION HERE!!!
-
-
+        $email = validateEmailInput("email"); // DO A SEPERATE VALIDATION HERE!!!
 
 
         // Ensure none of the inputs are null values
@@ -57,7 +52,12 @@ if (!empty($_POST)) {
                 $login = false;
             }
         } else {
-            $registerError = "Ensure username and password are no longer than 100 characters, and no shorter than 5 characters";
+            // Check what validation caused the error - checking that the email address was validated
+            if ($email === null) {
+                $registerError = "Email is not a valid address";
+            } else {
+                $registerError = "Ensure username and password are no longer than 100 characters, and no shorter than 5 characters";
+            }
         }
     }
 }
@@ -92,14 +92,20 @@ if ($register) { // If register data is verified and complete, attempt to regist
             $registerError = "User already exists";
         } else {
             // Create new user
-            $user = Database::insertUser($_POST['register-username'], $_POST['register-password'], $_POST['email']);
-            if ($user === false) {
-                $registerError = "Unable to create new user";
-            } else {
-                // Start Session
-                header('Location: profile.php');
-                exit;
+            try {
+                $user = Database::insertUser($_POST['register-username'], $_POST['register-password'], $_POST['email']);
+                if ($user === false) {
+                    $registerError = "Unable to create new user";
+                } else {
+                    // Start Session
+                    header('Location: profile.php');
+                    exit;
+                }
+            } catch (Exception $e) {
+                $registerError = "Email address has already been used";
             }
+
+
         }
     } catch (Exception $e) {
         $registerError = "Unable to create new user";
@@ -113,6 +119,11 @@ if ($register) { // If register data is verified and complete, attempt to regist
 </head>
 <main role="main">
     <section id="login-section">
+        ```php
+        <pre><?php print_r($_POST['register-username']); ?></pre>
+        <pre><?php print_r($_POST['register-password']); ?></pre>
+        <pre><?php print_r($_POST['email']); ?></pre>
+        ```
         <!-- Flash any error to the user to keep them informed -->
         <!-- If we have a login error -->
         <?php if (isset($loginError)) {
@@ -145,7 +156,7 @@ if ($register) { // If register data is verified and complete, attempt to regist
                     <label for="username">Username:</label>
                     <!-- Basic frontend validation using maxLength to limit username length -->
                     <input type="text" id="username" name="username" aria-required="true" maxlength="100" minLength="5"
-                        required="true">
+                        required>
                 </div>
                 <div id="login-username-error"></div>
                 <div class="search-input">
@@ -162,32 +173,33 @@ if ($register) { // If register data is verified and complete, attempt to regist
             <!-- On register form submit, we want to go back to the login.php script for validation -->
             <form id="register-form" action="../pages/login.php" method="POST">
                 <div class="search-input">
-                    <label for="username">Username:</label>
+                    <label for="register-username">Username:</label>
                     <input type="text" id="register-username" name="register-username" aria-required="true"
-                        maxlength="100" required="true" minLength="5">
+                        maxlength="100" minlength="5" required>
+                    <div id="register-username-error" class="error" style="display: none;">Username must be at least 5
+                        characters long.</div>
                 </div>
-                <div id="register-username-error"></div>
                 <div class="search-input">
-                    <label for="password">Password:</label>
+                    <label for="register-password">Password:</label>
                     <input type="password" id="register-password" name="register-password" aria-required="true"
-                        maxlength="100" required="true" minLength="5">
+                        maxlength="100" minlength="5" required>
+                    <div id="password-error" style="display: none;">Password must be at least 5 characters
+                        long.</div>
                 </div>
-                <div id="password-error"></div>
                 <div class="search-input">
                     <label for="confirm-password">Confirm Password:</label>
                     <input type="password" id="confirm-password" name="confirm-password" aria-required="true"
-                        maxlength="100" required="true" minLength="5">
+                        maxlength="100" minlength="5" required>
+                    <div id="confirm-password-error" style="display: none;">Passwords do not match.</div>
                 </div>
-                <div id="confirm-password-error"></div>
                 <div class="search-input email">
-                    <!-- Basic frontend validation using email type to ensure input is a valid email address -->
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" aria-required="true" required="true">
+                    <input type="email" id="email" name="email" aria-required="true" required>
+                    <div id="email-error" style="display: none;">Invalid email address.</div>
                 </div>
-                <div id="email-error"></div>
-                <!-- Additional validation to check passwords match, before form is submitted -->
-                <input id="register" type="submit" onclick="handleRegisterSubmit(event)" value="Register">
+                <input id="register" type="submit" value="Register">
             </form>
+
         </div>
     </section>
 </main>

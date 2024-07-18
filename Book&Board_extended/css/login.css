@@ -94,7 +94,10 @@ input[type="submit"] :focus {
   outline-offset: 2px; /* Offset to make the outline more visible */
 }
 
-#confirm-password-error {
+#confirm-password-error,
+#email-error,
+#password-error,
+#register-username-error {
   display: block; /* Ensure it's visible */
   color: red; /* For visibility */
 }

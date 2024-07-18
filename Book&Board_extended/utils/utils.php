@@ -46,8 +46,27 @@ function validateSearchInput($key)
 
 function validateLoginInput($key)
 {
+    // Validate the input be using htmlspecialchars function to turn certain symbols 
+    // into thier HMTL entities (e.g. < becomes &alt;, and > becomes &gt;)
+    // This prevents Cross Site Scripting injection attacks
     if (isset($_POST[$key]) && strlen($_POST[$key]) <= 100 && strlen($_POST[$key]) >= 5) { // 100 is varchar limit for location in the database
         $sanitized_value = htmlspecialchars($_POST[$key], ENT_QUOTES, 'UTF-8');
+    } else {
+        // Handle the error case where the variable is too long or not set
+        $sanitized_value = null; // null is default error value
+    }
+
+    return $sanitized_value;
+}
+
+function validateEmailInput($key)
+{
+    if (isset($_POST[$key])) { // 100 is varchar limit for location in the database
+        $sanitized_value = htmlspecialchars($_POST[$key], ENT_QUOTES, 'UTF-8');
+        // Sanitize the email input, removing characters not allowed in email addresses
+        // to prevent cross site scripting. Also checks the string contains an @ symbol,
+        // and that the domain name and domain extensions are valid and conform to convention
+        $sanitized_value = filter_var($sanitized_value, FILTER_SANITIZE_EMAIL);
     } else {
         // Handle the error case where the variable is too long or not set
         $sanitized_value = null; // null is default error value
