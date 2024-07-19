@@ -197,7 +197,7 @@ h6 {
 
 /* Menu styles when menu button is checked */
 .header .menu-btn:checked ~ .menu {
-  max-height: 240px; /* Show menu */
+  max-height: 300px; /* Show menu */
 }
 
 /* Navicon styles when menu button is checked */

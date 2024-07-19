@@ -72,8 +72,11 @@ if ($login) { // If login data is verified and complete, attempt to log user in
             $inputPassword = $_POST["password"];
             // Check if entered password matches the hashed and salted password stored in the DB
             if (password_verify($inputPassword, $hashedPassword)) {
-                // Start Session
-                header('Location: profile.php');
+                // Credentials are correct - Start Session
+                session_start();
+                $_SESSION["username"] = $_POST['username']; // use the users unique username as a session value
+                setcookie("loggedIn", "true", time() + (12 * 3600), "/"); // set cookie for 12 hours
+                header('Location: account.php');
                 exit;
             } else {
                 $loginError = "Incorrect password";
@@ -119,11 +122,6 @@ if ($register) { // If register data is verified and complete, attempt to regist
 </head>
 <main role="main">
     <section id="login-section">
-        ```php
-        <pre><?php print_r($_POST['register-username']); ?></pre>
-        <pre><?php print_r($_POST['register-password']); ?></pre>
-        <pre><?php print_r($_POST['email']); ?></pre>
-        ```
         <!-- Flash any error to the user to keep them informed -->
         <!-- If we have a login error -->
         <?php if (isset($loginError)) {

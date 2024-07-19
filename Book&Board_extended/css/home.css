@@ -278,7 +278,7 @@ h6 {
 }
 
 .header .menu-btn:checked ~ .menu {
-  max-height: 240px; /* Expand menu on checked */
+  max-height: 300px; /* Show menu */
 }
 
 .header .menu-btn:checked ~ .menu-icon .navicon {
