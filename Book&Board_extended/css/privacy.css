@@ -1,0 +1,17 @@
+#privacy {
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Vertical layout */
+  background-color: white; /* White background color */
+  max-width: 1600px; /* Maximum width */
+  width: 75vw; /* 70% of the viewport width */
+  height: auto; /* Automatic height adjustment */
+  border-radius: 10px; /* Rounded corners */
+  transition: 0.5s; /* Smooth transition effect */
+  padding: 20px; /* Padding inside the card */
+  text-align: left;
+  margin: 0;
+}
+
+#privacy h1 {
+  text-align: center;
+}

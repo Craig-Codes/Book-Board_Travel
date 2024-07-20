@@ -19,19 +19,18 @@ include '../partials/header.php';
 include '../partials/navbar.php';
 ?>
 
-<link rel="stylesheet" href="../css/error.css">
-<title>B&B Travel - Profile</title>
+<link rel="stylesheet" href="../css/account.css">
+<title>B&B Travel - Account</title>
 </head>
 
 <main role="main">
-    <section id="error" aria-labelledby="error-heading" role="alert">
-        <h1 id="error-heading">Logged In</h1>
-        <p>Yay</p>
+    <section id="account" aria-labelledby="account-heading" role="alert">
+        <h1 id="account-heading">Welcome <?php echo ($_SESSION['username']) ?></h1>
+        <!-- Users booking information would display here once that user story is complete -->
+        <p>Booking information:</p>
         <button id="home" type="button" onclick="window.location.href='/'">Home</button>
     </section>
 </main>
-
-<script src="../js/error.js"></script>
 
 <?php include '../partials/footer.php'; ?>
 <?php

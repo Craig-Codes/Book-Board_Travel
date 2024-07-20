@@ -1,0 +1,29 @@
+#account {
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Vertical layout */
+  background-color: white; /* White background color */
+  gap: 20px; /* Gap between elements inside the card */
+  max-width: 1000px; /* Maximum width */
+  width: 50vw; /* 70% of the viewport width */
+  height: auto; /* Automatic height adjustment */
+  border-radius: 10px; /* Rounded corners */
+  transition: 0.5s; /* Smooth transition effect */
+  padding: 20px; /* Padding inside the card */
+}
+
+button {
+  background-color: white;
+  border: 2px solid rgb(95, 182, 191);
+  color: rgb(95, 182, 191);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.25s ease-in-out;
+  font-weight: bold;
+  width: 100px;
+  align-self: center;
+}
+
+button:hover {
+  background-color: rgba(95, 182, 191, 0.3);
+}

@@ -35,7 +35,7 @@ main {
   justify-content: space-evenly; /* Space out content evenly */
   text-align: center; /* Center text */
   padding: 20px; /* Padding around content */
-  margin-top: 60px; /* Top margin */
+  margin-top: 100px; /* Top margin */
 }
 
 /* Styles for the footer element */
@@ -225,6 +225,11 @@ h6 {
 .header.scrolled {
   background-color: rgb(28, 108, 155); /* Background color */
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+#privacy-button {
+  text-decoration: none;
+  color: white;
 }
 
 /* Media querys control overall font size. All fonts have used rem for sizing,
