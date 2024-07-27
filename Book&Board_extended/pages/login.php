@@ -40,7 +40,7 @@ if (!empty($_POST)) {
         $username = validateLoginInput("register-username");
         $inputPassword = validateLoginInput("register-password");
         $confirmPassword = validateLoginInput("confirm-password");
-        $email = validateEmailInput("email"); // DO A SEPERATE VALIDATION HERE!!!
+        $email = validateEmailInput("email"); // Email is validate seperately using a helpper function
 
 
         // Ensure none of the inputs are null values
@@ -101,7 +101,10 @@ if ($register) { // If register data is verified and complete, attempt to regist
                     $registerError = "Unable to create new user";
                 } else {
                     // Start Session
-                    header('Location: profile.php');
+                    session_start();
+                    $_SESSION["username"] = $_POST['username']; // use the users unique username as a session value
+                    setcookie("loggedIn", "true", time() + (12 * 3600), "/"); // set cookie for 12 hours
+                    header('Location: account.php');
                     exit;
                 }
             } catch (Exception $e) {

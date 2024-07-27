@@ -13,8 +13,8 @@ $offers = [
         'price' => 3500,
         'activities' => ['Sightseeing', 'Museum Tours', 'Fine Dining'],
         'facilities' => ['Luxury Hotels', 'Boutique Shops', 'Gourmet Restaurants'],
-        'travelTime' => 80,  // 1h 20m
-        'travelStops' => 0  // Direct
+        'travelTime' => 80,  // in minutes
+        'travelStops' => 0  
     ],
     (object) [
         'id' => 5,
@@ -26,8 +26,8 @@ $offers = [
         'price' => 4500,
         'activities' => ['Sightseeing', 'Beach Activities', 'Cultural Tours'],
         'facilities' => ['Luxury Hotels', 'Fine Dining', 'Beach Access'],
-        'travelTime' => 1350,  // 22h 30m
-        'travelStops' => 1  // 1 Stop
+        'travelTime' => 1350,  
+        'travelStops' => 1  
     ],
     (object) [
         'id' => 6,
@@ -65,8 +65,8 @@ $offers = [
         'price' => 3700,
         'activities' => ['Sightseeing', 'Beach Activities', 'Cultural Tours'],
         'facilities' => ['Luxury Hotels', 'Beachfront Villas', 'Fine Dining'],
-        'travelTime' => 235,  // 3h 55m
-        'travelStops' => 0  // Direct
+        'travelTime' => 235,  
+        'travelStops' => 0  
     ],
     (object) [
         'id' => 11,
@@ -91,8 +91,8 @@ $offers = [
         'price' => 2800,
         'activities' => ['Beach Activities', 'Nightlife', 'Cultural Tours'],
         'facilities' => ['Beachfront Villas', 'Fine Dining', 'Spa Services'],
-        'travelTime' => 785,  // 13h 5m
-        'travelStops' => 1  // 1 Stop
+        'travelTime' => 785,  
+        'travelStops' => 1  
     ],
     (object) [
         'id' => 1,
@@ -104,8 +104,8 @@ $offers = [
         'price' => 4000,
         'activities' => ['Scuba Diving', 'Turtle Watching', 'Luxury Spa'],
         'facilities' => ['Private Pool', 'Beachfront Villas', 'All-inclusive Dining'],
-        'travelTime' => 630,  // 10h 30m
-        'travelStops' => 1  // 1 Stop
+        'travelTime' => 630,  
+        'travelStops' => 1  
     ],
     (object) [
         'id' => 2,
@@ -117,8 +117,8 @@ $offers = [
         'price' => 3000,
         'activities' => ['Sightseeing', 'Shopping', 'Cultural Tours'],
         'facilities' => ['Luxury Hotels', 'Fine Dining', 'Spa Services'],
-        'travelTime' => 705,  // 11h 45m
-        'travelStops' => 0  // Direct
+        'travelTime' => 705,  
+        'travelStops' => 0  
     ],
     (object) [
         'id' => 3,
@@ -130,7 +130,7 @@ $offers = [
         'price' => 500,
         'activities' => ['Casino Visits', 'Sightseeing', 'Luxury Shopping'],
         'facilities' => ['High-end Hotels', 'Gourmet Restaurants', 'Spa and Wellness Centers'],
-        'travelTime' => 115,  // 1h 55m
-        'travelStops' => 0  // Direct
+        'travelTime' => 115,  
+        'travelStops' => 0  
     ]
 ];

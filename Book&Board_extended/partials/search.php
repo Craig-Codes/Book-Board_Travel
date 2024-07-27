@@ -30,6 +30,7 @@ if (!empty($_GET)) {
 <link rel="stylesheet" href="../css/search.css">
 
 <section class="search-container">
+    <!-- GET Request used, with the server reading the URL query parameters -->
     <form id="search-form" action="../pages/offers.php" method="GET">
         <div class="search-input">
             <label for="destination">Destination:</label>
@@ -39,6 +40,7 @@ if (!empty($_GET)) {
         <div class="search-input">
             <label for="filters">Duration (nights):</label>
             <select id="duration" name="duration" aria-required="true">
+                <!-- Drop down box values given as a list -->
                 <option value="any" <?php echo ($form_duration === 'any') ? 'selected' : '' ?>>any</option>
                 <option value="4" <?php echo ($form_duration === '4') ? 'selected' : '' ?>>4
                 </option>
@@ -57,6 +59,7 @@ if (!empty($_GET)) {
         <div class="search-input">
             <label for="filters">Filter By:</label>
             <select id="filter" name="filter" aria-required="true">
+                <!-- PHP used to mark the selected form value -->
                 <option value="price" <?php echo ($form_filter === 'price') ? 'selected' : '' ?>>Price</option>
                 <option value="travel_time" <?php echo ($form_filter === 'travel_time') ? 'selected' : '' ?>>Travel Time
                 </option>
@@ -70,17 +73,13 @@ if (!empty($_GET)) {
                 <label for="DESC">High</label>
                 <input type="radio" id="DESC" name="order" value="DESC"
                     <?php echo ($filter_order === 'DESC') ? 'checked' : '' ?>>
-
             </div>
             <div>
                 <label for="css">Low</label>
                 <input type="radio" id="ASC" name="order" value="ASC"
                     <?php echo ($filter_order === 'ASC') ? 'checked' : '' ?>>
             </div>
-
-
         </div>
-
         <input type="submit" value="Search">
     </form>
 </section>

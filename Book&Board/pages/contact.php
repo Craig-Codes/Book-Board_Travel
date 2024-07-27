@@ -31,26 +31,27 @@ include '../data/locationData.php' ?>
     <section aria-labelledby="contact-heading">
         <h2 id="contact-heading">Our Locations</h2>
         <div id="contact">
+            <!-- Loop though the location data, outputting each property into a contact card -->
             <?php foreach ($locations as $location) { ?>
-            <div class="contact-card" role="region" aria-labelledby="location-<?php echo $location->id; ?>">
-                <div class="contact-details">
-                    <h4 id="location-<?php echo $location->id; ?>" class="card-title"><?php echo ($location->title) ?>
-                    </h4>
-                    <div class="address">
-                        <h5 class="card-street"><?php echo ($location->street) ?></h5>
-                        <h5 class="card-city"><?php echo ($location->city) ?></h5>
-                        <h5 class="card-county"><?php echo ($location->county) ?></h5>
-                        <h5 class="card-postcode"><?php echo ($location->postcode) ?></h5>
+                <div class="contact-card" role="region" aria-labelledby="location-<?php echo $location->id; ?>">
+                    <div class="contact-details">
+                        <h4 id="location-<?php echo $location->id; ?>" class="card-title"><?php echo ($location->title) ?>
+                        </h4>
+                        <div class="address">
+                            <h5 class="card-street"><?php echo ($location->street) ?></h5>
+                            <h5 class="card-city"><?php echo ($location->city) ?></h5>
+                            <h5 class="card-county"><?php echo ($location->county) ?></h5>
+                            <h5 class="card-postcode"><?php echo ($location->postcode) ?></h5>
+                        </div>
+                        <p class="card-phone">📞 <?php echo ($location->phone) ?></p>
+                        <p class="card-email">📧 <?php echo ($location->email) ?></p>
+                        <p class="card-opening-hours">Weekday hours: <?php echo ($location->weekHours) ?></p>
+                        <p class="card-opening-weekend">Weekend hours: <?php echo ($location->weekendHours) ?></p>
                     </div>
-                    <p class="card-phone">📞 <?php echo ($location->phone) ?></p>
-                    <p class="card-email">📧 <?php echo ($location->email) ?></p>
-                    <p class="card-opening-hours">Weekday hours: <?php echo ($location->weekHours) ?></p>
-                    <p class="card-opening-weekend">Weekend hours: <?php echo ($location->weekendHours) ?></p>
+                    <div class="contact-image">
+                        <img src=<?php echo $location->image ?> alt="<?php echo $location->title ?>" />
+                    </div>
                 </div>
-                <div class="contact-image">
-                    <img src=<?php echo $location->image ?> alt="<?php echo $location->title ?>" />
-                </div>
-            </div>
             <?php } ?>
         </div>
     </section>

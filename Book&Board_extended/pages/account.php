@@ -28,7 +28,8 @@ include '../partials/navbar.php';
         <h1 id="account-heading">Welcome <?php echo ($_SESSION['username']) ?></h1>
         <!-- Users booking information would display here once that user story is complete -->
         <p>Booking information:</p>
-        <button id="home" type="button" onclick="window.location.href='/'">Home</button>
+        <button id="home" type="button"
+            onclick="window.location.href='/Book&Board_extended/pages/home.php'">Home</button>
     </section>
 </main>
 

@@ -134,7 +134,7 @@ class utilsTest extends TestCase
         $this->assertNull($result);
     }
 
-    // Test case: the value contains special characters to ensure it is properly sanitized
+    // Test case: the value contains special characters to ensure it is properly sanitised
     public function testValueContainsSpecialCharacters()
     {
         // Set a username with special characters in the $_POST array

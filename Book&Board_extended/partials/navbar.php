@@ -22,11 +22,10 @@ if (!isset($_SESSION['username']) && (!isset($_COOKIE['loggedIn']) || $_COOKIE['
         <li><a href="../pages/contact.php">Contact Us</a></li>
         <!-- Change login / logout button based in if a user is currently logged in or out -->
         <?php if ($isLoggedIn) { ?>
-            <!-- Trigger logout function in php or JS? -->
-            <li id="logout"><a id="logout-button" href="../pages/account.php">Account</a></li>
-            <li id="logout"><a id="logout-button" href="../utils/logout.php">Logout</a></li>
+        <li id="logout"><a id="logout-button" href="../pages/account.php">Account</a></li>
+        <li id="logout"><a id="logout-button" href="../utils/logout.php">Logout</a></li>
         <?php } else { ?>
-            <li id="login"><a id="login-button" href="../pages/login.php">Login</a></li>
+        <li id="login"><a id="login-button" href="../pages/login.php">Login</a></li>
         <?php } ?>
     </ul>
 </nav>

@@ -6,6 +6,7 @@
         <span class="navicon"></span>
     </label>
     <ul class="menu">
+        <!-- Links to each page, ensuring the user can navigate around the application -->
         <li><a href="../index.php">Home</a></li>
         <li><a href="../pages/offers.php">Offers</a></li>
         <li><a href="../pages/contact.php">Contact Us</a></li>
