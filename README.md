@@ -1,4 +1,4 @@
-# Book-Board_Travel
+# Book & Board Travel Web Application
 
 ## To run the project:
 
